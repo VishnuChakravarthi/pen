@@ -1,0 +1,62 @@
+.register {
+    margin-top: 100px;
+}
+
+.register > h2 {
+    text-align: center;
+    padding: 20px;
+}
+
+.register__form {
+    width: 40%;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+    box-shadow: 7px 7px 9px 0px #afadad;
+}
+
+.register__form__passerr {
+    position: absolute;
+    background: #ffffff;
+    width: 100%;
+    z-index: 2;
+}
+
+.register__formPassfield {
+    width: 100%;
+}
+
+.register__form > form > div {
+    margin-bottom: 20px;
+}
+
+.register__form > form > div > {
+    margin-bottom: 20px;
+}
+
+.MuiInput-underline:before {
+    border-bottom: 1px solid rgb(165 162 162 / 42%) !important;
+}
+
+.MuiInput-underline:after {
+    border-bottom: 2px solid #00b0f0 !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+    color: #00b0f0 !important;
+}
+
+.register__btn {
+    color: white;
+    font-size: 1.15rem;
+    width: 100%;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+
+.header__show {
+    /* position: relative; */
+    margin-top: 100px;
+}

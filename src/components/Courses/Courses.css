@@ -1,0 +1,208 @@
+.custom-switch .custom-control-label::before {
+    height: 1.25rem;
+    border: 1px solid #dddddd;
+    width: 3.15rem;
+}
+
+.custom-switch .custom-control-label::before {
+    border-radius: 30px;
+}
+
+.custom-switch .custom-control-label::after {
+    height: 14px;
+    top: 11px;
+    width: 14px;
+}
+
+.coursecard__rating {
+    font-size: 30px !important;
+    margin-right: 0px !important;
+}
+
+.total__rating {
+    margin-right: 20px;
+    font-size: 15px;
+    color: #606470;
+}
+
+.btn-learning-blue {
+    background: #00b0f0 !important;
+    color: white !important;
+}
+
+.btn-learning-gray {
+    background: #606470 !important;
+    color: white !important;
+}
+
+.all-course-single:nth-child(odd) {
+    box-shadow: 0px 6px 34px -23px #00b0f0 !important;
+    /* border: 0.5px solid rgb(0 176 240) !important; */
+    border: 1px solid #00b0f0 !important;
+}
+
+.all-course-single:nth-child(even) {
+    /* border: 0.5px solid #606470 !important; */
+    border: 1px solid #606470 !important;
+    box-shadow: 0px 6px 34px -23px #606470;
+}
+
+.start__learning {
+    width: 100%;
+    cursor: pointer;
+    outline: none !important;
+}
+
+.start__learning::before,
+.start__learning::after {
+    position: absolute;
+    content: "";
+}
+
+.start__learning {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    border: 2px solid #00b0f0;
+    cursor: pointer;
+    /* margin: 0px 25px 15px; */
+    min-width: 150px;
+    border-radius: 50px;
+    color: black;
+}
+.start__learning span {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    /* letter-spacing: 2px; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* padding: 15px 20px; */
+    transition: 0.3s;
+}
+
+.start__learning::before {
+    background-color: white;
+    transition: 0.3s ease-out;
+}
+.startlearn__btn span {
+    color: black;
+    /* border: 1px solid rgb(28, 31, 30); */
+    transition: 0.2s 0.1s;
+}
+.startlearn__btn span:hover {
+    color: white;
+    transition: 0.2s 0.1s;
+}
+
+.startlearn__btn.hover__border::before {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+}
+.startlearn__btn.hover__border:hover::before {
+    width: 0%;
+}
+
+.header__btn__startlearn::before,
+.header__btn__startlearn::after {
+    position: absolute;
+    content: "";
+}
+
+.header__btn__startlearn {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    /* margin: 0px 25px 15px; */
+    min-width: 150px;
+}
+.header__btn__startlearn span {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    /* font-weight: bold; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.header__btn__spcl {
+    padding: 5px;
+}
+.header__btn__spcl span {
+    color: rgb(255, 255, 255);
+    background-color: rgb(96 100 112);
+}
+.header__btn__spcl::before,
+.header__btn__spcl::after {
+    background: transparent;
+    z-index: 2;
+}
+
+.header__btn__startlearn.hover__border__spcl::before,
+.header__btn__startlearn.hover__border__spcl::after {
+    width: 10%;
+    height: 25%;
+    transition: 0.35s;
+}
+.header__btn__startlearn.hover__border__spcl::before {
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+}
+.header__btn__startlearn.hover__border__spcl::after {
+    top: 0;
+    right: 0;
+    border-right: 1px solid white;
+    border-top: 1px solid white;
+}
+.header__btn__startlearn.hover__border__spcl:hover::before,
+.header__btn__startlearn.hover__border__spcl:hover::after {
+    width: 99%;
+    height: 99%;
+}
+
+.courses_container .courses_list_content {
+    border: none !important;
+}
+
+.fa__notwish {
+    color: black;
+}
+
+.fa__wish {
+    color: red;
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    background: url("https://cssanimation.rocks/images/posts/steps/heart.png")
+        no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: background-position 1s steps(28);
+    transition-duration: 0s;
+    right: -40px;
+    top: -40px;
+    position: absolute;
+}
+.heart.is-active {
+    transition-duration: 1s;
+    background-position: -2800px 0;
+}

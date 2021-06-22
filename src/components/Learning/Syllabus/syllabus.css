@@ -1,0 +1,50 @@
+.li-course-left:hover {
+    background-color: transparent;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.li-course-left span {
+    background: #fff;
+    border-radius: 40px;
+    cursor: pointer;
+    padding: 13px;
+    margin: 0 auto;
+    box-shadow: 6px 5px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.li-course-left:hover span {
+    background: #00b0f0;
+    border-radius: 40px;
+    cursor: pointer;
+    padding: 13px;
+    margin: 0 auto;
+    color: white;
+}
+
+.syllabus__card {
+    margin: auto !important;
+}
+
+.syllabus__main {
+    margin-left: 200px;
+}
+
+.shadow1 {
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 15px;
+    border: 0.5px solid #93deff;
+}
+.shadow2 {
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 15px;
+    border: 0.5px solid #606470;
+}
+
+.shadow2 > div > h3 {
+    color: white;
+}

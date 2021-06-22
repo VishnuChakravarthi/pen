@@ -1,0 +1,178 @@
+nav.navbar {
+    padding: 10px 20px;
+}
+
+.navbar-white {
+    background-color: white;
+}
+
+.logo-img {
+    width: 120px;
+}
+
+.candidate_revew_search_box.course input.form-control {
+    width: auto;
+}
+
+.navbar {
+    /* z-index: 2; */
+    box-shadow: 0 2px 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-nav,
+.nav-item,
+.nav-link {
+    text-align: center;
+}
+
+.vertical-wrapper .content-vertical .mega-vertical-menu > li {
+    width: 100%;
+}
+
+.nav-item {
+    margin: 0 5px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #000000;
+    font-size: 16px;
+    position: relative;
+    padding: 0px;
+}
+
+.sideBar {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    left: -100vw;
+    -webkit-transition: -webkit-transform 300ms;
+    -moz-transition: -moz-transform 300ms;
+    -o-transition: -o-transform 300ms;
+    -ms-transition: -ms-transform 300ms;
+    transition: transform 300ms;
+    z-index: 1000;
+    display: flex;
+}
+
+.show.sideBar {
+    transform: translateX(100vw);
+}
+
+.sideBar .bar {
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sideBar .bar-overlay {
+    width: calc(100vw - 250px);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.side-links {
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.side-links:last-child {
+    border-bottom: none;
+}
+
+.light-hov {
+    background-color: #00b0f0 !important;
+}
+
+.light-hov:hover {
+    opacity: 0.9;
+}
+
+.special-ul > li {
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #00b0f0 !important;
+}
+
+.nav-link:hover > i {
+    color: #00b0f0 !important;
+}
+
+/* .nav-link:hover > span {
+    color: #00b0f0 !important;
+} */
+
+.nav-link::before {
+    transition: 500ms;
+    height: 5px;
+    content: "";
+    position: absolute;
+    background-color: #00b0f0;
+}
+
+.nav-link-ltr::before {
+    width: 0%;
+    bottom: -10px;
+    background-color: rgb(253, 251, 251);
+    /* display: none; */
+}
+
+.nav-link-ltr:hover::before {
+    width: 100%;
+    background-color: #00b0f0;
+    /* display: block; */
+}
+
+.nav-main {
+    margin: 0 15px;
+}
+
+.nav-active {
+    color: #00b0f0 !important;
+}
+
+.nav-active > i {
+    color: #00b0f0 !important;
+}
+
+.nav-active::before {
+    width: 100%;
+    height: 5px;
+    content: "";
+    position: absolute;
+    background-color: #00b0f0;
+}
+
+.text-title {
+    color: white !important;
+}
+
+/* .login__reg__btn {
+    background: #00b0f0;
+    border: 1px solid #00b0f0;
+    padding: 0.5rem 0.7rem;
+    font-size: 18px;
+} */
+
+.login__reg__btn:hover {
+    color: black !important;
+}
+
+@media (max-width: 375px) {
+    .logo-img {
+        width: 100px;
+    }
+}

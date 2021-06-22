@@ -1,0 +1,73 @@
+{
+    "name": "pen",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@material-ui/core": "^4.11.1",
+        "@material-ui/icons": "^4.11.2",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "animejs": "^3.2.0",
+        "axios": "^0.19.2",
+        "bootstrap-scss": "^4.4.1",
+        "bootstrap-switch-button-react": "^1.2.0",
+        "dateformat": "^4.3.1",
+        "formik": "^2.1.4",
+        "helmet": "^4.4.1",
+        "jquery": "^3.5.1",
+        "material-ui-dropzone": "^3.5.0",
+        "node-sass": "^4.14.1",
+        "owlbot-js": "^2.0.2",
+        "precise-ui": "^1.5.1",
+        "query-string": "^6.12.1",
+        "react": "^16.13.1",
+        "react-animated-progress-bar": "^1.0.4",
+        "react-bootstrap": "^1.0.1",
+        "react-dom": "^16.13.1",
+        "react-dropzone": "^11.0.1",
+        "react-helmet": "^6.1.0",
+        "react-hook-form": "^5.7.2",
+        "react-loader-spinner": "^3.1.14",
+        "react-native-instagram-share": "0.0.8",
+        "react-pdf": "^5.1.0",
+        "react-player": "^2.7.0",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "3.4.1",
+        "react-share": "^4.2.1",
+        "react-spinners": "^0.9.0",
+        "react-tilt": "^0.1.4",
+        "react-typed": "^1.2.0",
+        "react-view-pdf": "^0.1.2",
+        "reactjs-pdf-reader": "^1.0.12",
+        "reactstrap": "^8.4.1",
+        "simple-react-donut-chart": "0.0.8",
+        "sweetalert": "^2.1.2",
+        "unirest": "^0.6.0",
+        "word-definition": "^2.1.6"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.9.4"
+    }
+}

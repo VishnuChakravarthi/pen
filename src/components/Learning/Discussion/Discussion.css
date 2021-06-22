@@ -1,0 +1,62 @@
+.reply__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reply__form {
+    width: 100%;
+    border: 1px solid #9e8e8e6b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.reply__btns__div {
+    text-align: center;
+}
+
+.reply__btns__div > button {
+    margin: 10px;
+}
+
+.discussion__btn__cancel {
+    background-color: #606470 !important;
+}
+
+.discussion__btn__cancel:hover {
+    color: white !important;
+}
+
+.discuss__reply__btn {
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 10px 20px;
+    background: #00b0f0;
+    border-radius: 10px;
+    color: white;
+}
+
+.discuss__reply__btn:hover {
+    /* font-size: 18px;
+     */
+    font-weight: bold;
+}
+
+.discuss__questions {
+    border-bottom: 1px solid #606470;
+    padding-top: 10px;
+}
+
+.back__arrow {
+    float: left;
+    margin-left: 20px;
+}
+
+.mbp_sub.media:first {
+    border-top: 2px solid;
+    margin: 50px 0px 0px 70px !important;
+}
+.mbp_sub.media {
+    border-top: 2px solid;
+    margin: 30px 0px 0px 70px !important;
+}
