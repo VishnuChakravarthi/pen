@@ -343,7 +343,7 @@ const Learning = React.memo(function Learning({ match }) {
                                                                               {lesson
                                                                                   ?.assessments
                                                                                   ?.length
-                                                                                  ? lessons?.assessments?.map(
+                                                                                  ? lesson?.assessments?.map(
                                                                                         (
                                                                                             assess
                                                                                         ) => (

@@ -57,6 +57,7 @@
     height: 700px;
 }
 
+<<<<<<< HEAD
 .loader_allcourse {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -94,6 +95,8 @@
     }
 }
 
+=======
+>>>>>>> 6c65192e9cb460a1b02fc6c4e9df35184974a6f9
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-spin infinite 20s linear;
