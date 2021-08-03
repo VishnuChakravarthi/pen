@@ -325,24 +325,46 @@ const Learning = React.memo(function Learning({ match }) {
                                                                       (
                                                                           lesson
                                                                       ) => (
-                                                                          <Link
-                                                                              to={`/learn/${match.params.course_id}/lesson/${lesson.id}`}
-                                                                          >
-                                                                              <div className=" course__disp">
-                                                                                  <div className="col-md-12 p-0">
-                                                                                      <div className="course__title">
-                                                                                          <i className="fas fa-book mr-2"></i>
-                                                                                          {
-                                                                                              lesson.title
-                                                                                          }
+                                                                          <>
+                                                                              <Link
+                                                                                  to={`/learn/${match.params.course_id}/lesson/${lesson.id}`}
+                                                                              >
+                                                                                  <div className=" course__disp">
+                                                                                      <div className="col-md-12 p-0">
+                                                                                          <div className="course__title">
+                                                                                              <i className="fas fa-book mr-2"></i>
+                                                                                              {
+                                                                                                  lesson.title
+                                                                                              }
+                                                                                          </div>
                                                                                       </div>
                                                                                   </div>
-                                                                              </div>
-                                                                          </Link>
+                                                                              </Link>
+                                                                              {lesson
+                                                                                  ?.assessments
+                                                                                  ?.length
+                                                                                  ? lessons?.assessments?.map(
+                                                                                        (
+                                                                                            assess
+                                                                                        ) => (
+                                                                                            <div className="course__disp">
+                                                                                                <div className="col-md-12 p-0">
+                                                                                                    <div className="course__title">
+                                                                                                        <i className="fas fa-pen-fancy mr-2"></i>
+                                                                                                        {
+                                                                                                            assess.title
+                                                                                                        }
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        )
+                                                                                    )
+                                                                                  : null}
+                                                                          </>
                                                                       )
                                                                   )
                                                                 : null}
-                                                            {course?.assessments
+                                                            {/* {course?.assessments
                                                                 ?.length
                                                                 ? course.assessments?.map(
                                                                       (
@@ -360,7 +382,7 @@ const Learning = React.memo(function Learning({ match }) {
                                                                           </div>
                                                                       )
                                                                   )
-                                                                : null}
+                                                                : null} */}
                                                         </>
                                                     )
                                                 )
