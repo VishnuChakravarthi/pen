@@ -1,0 +1,123 @@
+/* .:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+} */
+
+/* .price__container:after {
+    left: 100%;
+    background: linear-gradient(140deg, #606470 50%, transparent 50%);
+}
+
+.price__container:before {
+    left: 0;
+    background: linear-gradient(320deg, #606470 50%, transparent 50%);
+}
+
+.price__container:after,
+.price__container:before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    right: 0;
+    width: 50%;
+    height: 135px;
+} */
+
+.price__container {
+    height: 280px;
+}
+
+.plan__desc {
+    margin: 30px 0 20px 0;
+}
+
+.triangle__div1 {
+    background: linear-gradient(to right top, white 50%, #ff000000 50%);
+    width: 50%;
+    position: absolute;
+    left: 0;
+    height: 100px;
+    top: 30%;
+}
+
+.triangle__div2 {
+    background: linear-gradient(to left top, white 50%, #ff000000 50%);
+    width: 50%;
+    position: absolute;
+    right: 0;
+    height: 100px;
+    top: 30%;
+}
+
+.buy__button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6vh;
+    /* margin: 20px 0px; */
+    padding: 20px 20px;
+    align-items: center;
+}
+
+.price__buy {
+    margin: 15px 50px 10px 0px !important;
+    font-size: 2em !important;
+}
+
+.buy__btn::before,
+.buy__btn::after {
+    position: absolute;
+    content: "";
+}
+
+.buy__btn {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    background-color: #00b0f0;
+    border: none;
+    cursor: pointer;
+    margin: 0px 25px 15px;
+    min-width: 150px;
+    border-radius: 50px;
+}
+.buy__btn span {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    transition: 0.3s;
+}
+
+.buy__btn::before {
+    background-color: #606470;
+    transition: 0.3s ease-out;
+}
+.btn__buy span {
+    color: rgb(255, 255, 255);
+    /* border: 1px solid rgb(28, 31, 30); */
+    transition: 0.2s 0.1s;
+}
+.btn__buy span:hover {
+    color: rgb(28, 31, 30);
+    transition: 0.2s 0.1s;
+}
+
+.buy__btn.hover__filled::before {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+}
+.buy__btn.hover__filled:hover::before {
+    width: 0%;
+}

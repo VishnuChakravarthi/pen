@@ -1,0 +1,101 @@
+.changepass__form__passerr {
+    top: 56px;
+    padding: 0px 30px;
+    position: absolute;
+    background: #ffffff;
+    width: 100%;
+    z-index: 2;
+}
+
+.return__course {
+    letter-spacing: 0px !important;
+    text-transform: none !important;
+    padding: 15px 10px !important;
+}
+
+.uploaded_course_table {
+    overflow-x: scroll;
+}
+
+.courses_container .courses_list_content:hover {
+    background-color: transparent;
+}
+
+.notify__cont {
+    margin-top: 20px;
+    padding: 40px;
+    background: white;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 3%);
+    border-radius: 15px;
+}
+
+.notify__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.course__selected {
+    background: #00b0f0;
+}
+
+.course__selected.collapsed {
+    background: white;
+}
+
+.course__selected.collapsed > h2 > button {
+    color: black;
+}
+
+.course__selected.collapsed > h2 > button > h3 {
+    color: black;
+}
+
+.course__selected > h2 > button {
+    color: white !important;
+}
+
+.course__selected > h2 > button > h3 {
+    color: white;
+}
+
+.content-section-changepassword {
+    margin: 30px auto;
+}
+
+@media only screen and (max-width: 520px) {
+    .content-section-profile {
+        width: 88% !important;
+    }
+
+    .content-section-profile > .container {
+        margin: 0px;
+        width: 100%;
+    }
+
+    .progress_courses_card {
+        padding: 10px 0;
+    }
+
+    .event_counter_plugin_container {
+        height: 100% !important;
+    }
+
+    .event_counter_plugin_content ul li {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .event_counter_plugin_container {
+        height: 100% !important;
+    }
+
+    .event_counter_plugin_content ul li {
+        width: 50%;
+    }
+
+    .course__progress {
+        width: 100% !important;
+    }
+}

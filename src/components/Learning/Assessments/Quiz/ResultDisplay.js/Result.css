@@ -1,0 +1,25 @@
+.result__container {
+    margin-top: 100px;
+    /* position: relative; */
+    padding: 30px;
+}
+
+.result__total {
+    font-weight: bold !important;
+}
+
+.result__totalval {
+    font-size: 28px !important;
+    font-weight: bold !important;
+}
+
+.result__backbtn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 20px;
+    background: transparent;
+    color: #2ecc71;
+    border: 2px solid #2ecc71;
+    cursor: pointer;
+    outline: none;
+}

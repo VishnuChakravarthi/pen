@@ -1,0 +1,163 @@
+.right,
+.wrong {
+    color: #fff;
+    display: none;
+}
+
+.container-quiz {
+    height: 100%;
+    width: 60%;
+    background-color: #fff;
+    padding: 3rem 1rem;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin: 30px auto !important;
+}
+.score {
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+.question {
+    margin-top: 3rem;
+    font-size: 32px;
+}
+
+.choices {
+    margin-top: 3rem;
+}
+
+.choices button {
+    border-radius: 5px;
+    padding: 12px 40px;
+    background-color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 5px 5px 18px 2px rgba(0, 0, 0, 0.1);
+    transition: 0.2s all;
+    outline: none;
+}
+
+.true {
+    border: 2px solid #2ecc71;
+    color: #2ecc71;
+}
+.false {
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.choices button:last-child {
+    margin-left: 1rem;
+}
+
+.choices button:hover {
+    transform: translateY(-2px);
+}
+
+.restart {
+    border: none;
+    border-radius: 5px;
+    padding: 12px 40px;
+    background-color: #2980b9;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 5px 5px 18px 2px rgba(0, 0, 0, 0.1);
+    transition: 0.2s all;
+    outline: none;
+    display: none;
+    margin-top: 3rem;
+}
+.result {
+    display: none;
+    font-size: 22px;
+    text-align: center;
+}
+
+.options-container {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.options-container label {
+    cursor: pointer;
+}
+
+.que-no {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.quiz {
+    margin-top: 100px;
+    display: flex;
+}
+
+.quiz__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.quiz__ques {
+    padding: 20px;
+    /* text-align: left; */
+}
+
+.quiz__quesbtns {
+    width: 25%;
+}
+
+.quiz__quesbtns > button {
+    padding: 5px 20px;
+    margin: 10px;
+    /* border: 2px solid #34cd75; */
+    border-radius: 10px;
+    /* color: #2ecc71; */
+    font-weight: bold;
+    background: transparent;
+    cursor: pointer;
+    outline: none !important;
+}
+
+.quiz__ques__btn {
+}
+
+.quiz__noans {
+    color: black;
+    border: 2px solid black;
+}
+
+.quiz__skipped {
+    color: red;
+    border: 2px solid red;
+}
+
+.quiz__answered {
+    color: #34cd75;
+    border: 2px solid #34cd75;
+}
+
+/* .MuiFormControl-root {
+    width: 50%;
+} */
+
+@media screen and (max-width: 700px) {
+    .container {
+        width: 90%;
+    }
+}

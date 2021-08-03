@@ -1,0 +1,105 @@
+.box-shadow-custom {
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.8),
+        5px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    height: 40vh;
+}
+
+.ui_kit_checkbox .custom-control-label::after {
+    top: 0.35rem;
+}
+
+.center-table {
+    vertical-align: middle !important;
+}
+
+.border-custom {
+    border: 1px dashed rgba(0, 0, 0, 0.5);
+}
+
+.player-stats {
+    border-radius: 20px;
+    background-color: #93deff;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+
+    transition: all 300ms ease-in-out;
+}
+
+.player-stat {
+    font-size: 0.75rem;
+    background: #606470;
+    color: whitesmoke;
+    text-transform: uppercase;
+    padding: 0.85rem 1rem;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.player-stat-number {
+    margin-top: 0.375rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: whitesmoke;
+    padding: 0.85rem 1rem;
+    text-align: center;
+}
+
+.player-stats:hover {
+    box-shadow: 15px 15px 30px rgba(1, 1, 1, 0.3);
+    transform: scale3d(1.2, 1.2, 1.5);
+}
+
+.card-header-custom {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    overflow: auto;
+}
+
+.d-flex-fixed {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.event_counter_plugin_content > ul > li {
+    color: black;
+}
+
+.event_counter_plugin_content > ul > li > span {
+    color: black;
+}
+
+.courses_list_content_main {
+    border-bottom: 2px solid #4c4949;
+    padding: 20px 0px !important;
+}
+
+.courses_list_content {
+    padding: 10px;
+}
+
+.scrollable-div > div:last-child {
+    border-bottom: none;
+}
+
+.courses_list_content .top_courses.list .details .tc_footer ul.tc_review {
+    font-size: 15px;
+}
+
+.courses_list_content .top_courses.list .details .tc_button > button {
+    padding: 5px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+.points__container {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+}

@@ -1,0 +1,22 @@
+.card-header {
+    border: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.event_lists {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.assess__selected {
+    background: #00b0f0;
+}
+
+.assess__selected > h2 > button {
+    color: white !important;
+}
+
+.assess_trans {
+    transition: 0.7s;
+    cursor: pointer;
+}

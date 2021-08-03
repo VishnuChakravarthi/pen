@@ -1,0 +1,15 @@
+.page{
+    min-height: 100vh;
+}
+.container.cart{
+    padding-top: 10vh;
+    min-height: 49vh;
+}
+.price{
+    font-size: 3em;
+    display: block;
+    color: black;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1;
+}
