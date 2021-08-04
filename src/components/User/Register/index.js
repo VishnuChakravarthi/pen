@@ -101,38 +101,38 @@ function Register() {
                                         phoneNo: "",
                                         password: "",
                                     }}
-                                    validate={(values) => {
-                                        const errors = {};
-                                        if (!values.email) {
-                                            errors.email = "Required";
-                                        } else if (
-                                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
-                                                values.email
-                                            )
-                                        ) {
-                                            errors.email =
-                                                "Invalid email address";
-                                        }
+                                    // validate={(values) => {
+                                    //     const errors = {};
+                                    //     if (!values.email) {
+                                    //         errors.email = "Required";
+                                    //     } else if (
+                                    //         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+                                    //             values.email
+                                    //         )
+                                    //     ) {
+                                    //         errors.email =
+                                    //             "Invalid email address";
+                                    //     }
 
-                                        if (!values.name) {
-                                            errors.name = "Required";
-                                        }
+                                    //     if (!values.name) {
+                                    //         errors.name = "Required";
+                                    //     }
 
-                                        if (!values.phoneNo) {
-                                            errors.phoneNo = "Required";
-                                        } else if (
-                                            values.phoneNo.length !== 10
-                                        ) {
-                                            errors.phoneNo =
-                                                "Invalid no. Please enter only the number without country code";
-                                        }
+                                    //     if (!values.phoneNo) {
+                                    //         errors.phoneNo = "Required";
+                                    //     } else if (
+                                    //         values.phoneNo.length !== 10
+                                    //     ) {
+                                    //         errors.phoneNo =
+                                    //             "Invalid no. Please enter only the number without country code";
+                                    //     }
 
-                                        if (!values.password) {
-                                            errors.password = "Required";
-                                        }
+                                    //     if (!values.password) {
+                                    //         errors.password = "Required";
+                                    //     }
 
-                                        return errors;
-                                    }}
+                                    //     return errors;
+                                    // }}
                                     onSubmit={async (values) => {
                                         // e.preventDefault();
                                         console.log(values.name);
@@ -151,7 +151,13 @@ function Register() {
                                                 options
                                             );
                                             const data = await response.json();
-                                            // console.log(data);
+                                            console.log(data);
+                                            if (data.errors) {
+                                                return swal({
+                                                    text: "Email already exists",
+                                                    icon: "error",
+                                                });
+                                            }
                                             swal({
                                                 text: "Successfully Registered",
                                                 icon: "success",
@@ -248,9 +254,9 @@ function Register() {
                                                 </label>
                                             </div>
                                             <p style={{ marginLeft: "25px" }}>
-                                                {errors.phoneNo &&
-                                                    touched.phoneNo &&
-                                                    errors.phoneNo}
+                                                {errors.phoneno &&
+                                                    touched.phoneno &&
+                                                    errors.phoneno}
                                             </p>
                                             <br />
 

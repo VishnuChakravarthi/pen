@@ -172,9 +172,9 @@ function Register() {
                             value={formik.values.phoneno}
                             label="Phone"
                         />
-                        {formik.errors.phone ? (
+                        {/* {formik.errors.phone ? (
                             <div>{formik.errors.phone}</div>
-                        ) : null}
+                        ) : null} */}
                     </div>
 
                     <div className="form-login position-relative">

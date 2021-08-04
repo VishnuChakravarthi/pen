@@ -163,7 +163,9 @@ const Navbar = (props) => {
                         <li className="text-center side-links">
                             {loggedIn ? (
                                 <Link to="/profile" className="nav-link">
-                                    <i className="flaticon-user titles titles-1 mr-2"></i>
+                                    {/* <i className="flaticon-user titles titles-1 mr-2"></i>
+                                     */}
+                                    <i class="fas fa-user titles titles-1 mr-2"></i>
                                     <span className="titles-1">
                                         {localStorage.getItem("res_us")}
                                     </span>
@@ -321,10 +323,14 @@ const Navbar = (props) => {
                                         type="button"
                                         style={{ height: "43px" }}
                                     >
-                                        <span
+                                        <i
+                                            class="fas fa-search"
+                                            onClick={clearSearch}
+                                        ></i>
+                                        {/* <span
                                             className="flaticon-magnifying-glass"
                                             onClick={clearSearch}
-                                        ></span>
+                                        ></span> */}
                                     </button>
                                 </Link>
                             </div>
@@ -394,7 +400,8 @@ const Navbar = (props) => {
                                     onClick={() => setActive("profile")}
                                 >
                                     {/* <span className="titles-1"> */}
-                                    <i className="flaticon-user titles titles-1 mr-2"></i>
+                                    {/* <i className="flaticon-user titles titles-1 mr-2"></i> */}
+                                    <i class="fas fa-user titles titles-1 mr-2"></i>
                                     {localStorage.getItem("res_us")}
                                     {/* </span> */}
                                 </Link>

@@ -136,7 +136,13 @@ function Home() {
                                                                     "transparent",
                                                             }}
                                                         >
-                                                            <span className="flaticon-magnifying-glass"></span>
+                                                            <i
+                                                                class="fas fa-search"
+                                                                // onClick={
+                                                                //     dispatchCourses
+                                                                // }
+                                                            ></i>
+                                                            {/* <span className="flaticon-magnifying-glass"></span> */}
                                                         </button>
                                                     </div>
                                                 </form>

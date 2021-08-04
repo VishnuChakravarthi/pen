@@ -28,6 +28,8 @@ const Learning = React.memo(function Learning({ match }) {
     const [displaySide, setDisplaySide] = useState(true);
     const [allCourseAsses, setAllCourseAsses] = useState([]);
 
+    const [hideCourse, setHideCourse] = useState(true);
+
     const [videoBookmarkTime, setVideoBookmarkTime] = useState(0);
     const [lesson, setLesson] = useState([]);
     const [{ darkMode, key }, dispatch] = useStateValue();
@@ -104,7 +106,12 @@ const Learning = React.memo(function Learning({ match }) {
         // setLesson(data[0].lessons);
         try {
             const response = await Axios.get(
-                `${url}/syllabus/${match.params.course_id}`
+                `${url}/syllabus-protected/${match.params.course_id}`,
+                {
+                    headers: {
+                        Authorization: `Basic ${token}`,
+                    },
+                }
             );
             setSyllabus(response.data.data);
             var arr = response.data.data.map((res) => res.lessons);
@@ -311,10 +318,8 @@ const Learning = React.memo(function Learning({ match }) {
                                             {console.log(allCourseAsses)}
                                             {syllabus?.map(
                                                 (course) => (
-                                                    console.log(
-                                                        course.lessons.length
-                                                    ),
-                                                    (
+                                                    console.log(hideCourse),
+                                                    hideCourse ? (
                                                         <>
                                                             <div className="lesson__title">
                                                                 {course.title}
@@ -323,7 +328,8 @@ const Learning = React.memo(function Learning({ match }) {
                                                                 ?.length
                                                                 ? course.lessons?.map(
                                                                       (
-                                                                          lesson
+                                                                          lesson,
+                                                                          i
                                                                       ) => (
                                                                           <>
                                                                               <Link
@@ -347,16 +353,33 @@ const Learning = React.memo(function Learning({ match }) {
                                                                                         (
                                                                                             assess
                                                                                         ) => (
-                                                                                            <div className="course__disp">
-                                                                                                <div className="col-md-12 p-0">
-                                                                                                    <div className="course__title">
-                                                                                                        <i className="fas fa-pen-fancy mr-2"></i>
-                                                                                                        {
-                                                                                                            assess.title
-                                                                                                        }
+                                                                                            <>
+                                                                                                <Link
+                                                                                                    to={`/learn/${match.params.course_id}/assessment/${assess.id}`}
+                                                                                                >
+                                                                                                    <div
+                                                                                                        className="course__disp"
+                                                                                                        onLoad={() => {
+                                                                                                            if (
+                                                                                                                assess.attempts
+                                                                                                            ) {
+                                                                                                                setHideCourse(
+                                                                                                                    false
+                                                                                                                );
+                                                                                                            }
+                                                                                                        }}
+                                                                                                    >
+                                                                                                        <div className="col-md-12 p-0">
+                                                                                                            <div className="course__title">
+                                                                                                                <i className="fas fa-pen-fancy mr-2"></i>
+                                                                                                                {
+                                                                                                                    assess.title
+                                                                                                                }
+                                                                                                            </div>
+                                                                                                        </div>
                                                                                                     </div>
-                                                                                                </div>
-                                                                                            </div>
+                                                                                                </Link>
+                                                                                            </>
                                                                                         )
                                                                                     )
                                                                                   : null}
@@ -364,26 +387,9 @@ const Learning = React.memo(function Learning({ match }) {
                                                                       )
                                                                   )
                                                                 : null}
-                                                            {/* {course?.assessments
-                                                                ?.length
-                                                                ? course.assessments?.map(
-                                                                      (
-                                                                          assess
-                                                                      ) => (
-                                                                          <div className="course__disp">
-                                                                              <div className="col-md-12 p-0">
-                                                                                  <div className="course__title">
-                                                                                      <i className="fas fa-pen-fancy mr-2"></i>
-                                                                                      {
-                                                                                          assess.title
-                                                                                      }
-                                                                                  </div>
-                                                                              </div>
-                                                                          </div>
-                                                                      )
-                                                                  )
-                                                                : null} */}
                                                         </>
+                                                    ) : (
+                                                        <div>Hello </div>
                                                     )
                                                 )
                                             )}

@@ -309,12 +309,18 @@ function Wishlist({ fromProfile }) {
                                                                 className="btn"
                                                                 type="button"
                                                             >
-                                                                <span
+                                                                <i
+                                                                    className="fas fa-search"
+                                                                    onClick={
+                                                                        dispatchCourses
+                                                                    }
+                                                                ></i>
+                                                                {/* <span
                                                                     className="flaticon-magnifying-glass"
                                                                     onClick={
                                                                         dispatchCourses
                                                                     }
-                                                                ></span>
+                                                                ></span> */}
                                                             </button>
                                                         </Link>
                                                     </form>

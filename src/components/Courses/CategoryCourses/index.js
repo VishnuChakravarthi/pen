@@ -171,12 +171,18 @@ function CategoryCourses({ match }) {
                                                                 className="btn"
                                                                 type="button"
                                                             >
-                                                                <span
+                                                                <i
+                                                                    class="fas fa-search"
+                                                                    onClick={
+                                                                        dispatchCourses
+                                                                    }
+                                                                ></i>
+                                                                {/* <span
                                                                     className="flaticon-magnifying-glass"
                                                                     onClick={
                                                                         dispatchCourses
                                                                     }
-                                                                ></span>
+                                                                ></span> */}
                                                             </button>
                                                         </Link>
                                                     </form>
