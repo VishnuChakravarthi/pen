@@ -16,7 +16,7 @@ function Syllabus({ match }) {
     const [progress, setProgress] = useState("");
     const [colorBg, setColorBg] = useState(true);
     const [{ darkMode }, dispatch] = useStateValue();
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
     const id = match.params.course_id;
 
     useEffect(() => {

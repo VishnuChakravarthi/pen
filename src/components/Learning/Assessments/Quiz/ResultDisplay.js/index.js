@@ -17,7 +17,7 @@ import Axios from "axios";
 
 function ResultDisplay({ match }) {
     const [{ result }, dispatch] = useStateValue();
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     const course_id = match.params.course_id;
 

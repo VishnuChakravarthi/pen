@@ -21,6 +21,9 @@ const Learning = React.memo(function Learning({ match }) {
     const [open, setOpen] = useState(false);
     const [modalType, setModalType] = useState("");
     const [syllabus, setSyllabus] = useState([]);
+    const [finishedCourse, setFinishedCourse] = useState([]);
+    const [unFinishedCourse, setUnFinishedCourse] = useState([]);
+    const [remCourse, setRemCourse] = useState([]);
     const [currentSyllabus, setCurrentSyllabus] = useState("");
     const [allLessons, setAllLessons] = useState([]);
     const [syllabusLesson, setSyllabusLesson] = useState([]);
@@ -28,7 +31,7 @@ const Learning = React.memo(function Learning({ match }) {
     const [displaySide, setDisplaySide] = useState(true);
     const [allCourseAsses, setAllCourseAsses] = useState([]);
 
-    const [hideCourse, setHideCourse] = useState(true);
+    const [hideCourse, setHideCourse] = useState(false);
 
     const [videoBookmarkTime, setVideoBookmarkTime] = useState(0);
     const [lesson, setLesson] = useState([]);
@@ -39,7 +42,7 @@ const Learning = React.memo(function Learning({ match }) {
     const coursesPerPage = 1;
     const id = match.params.course_id;
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         fetchSyllabus();
@@ -116,11 +119,38 @@ const Learning = React.memo(function Learning({ match }) {
             setSyllabus(response.data.data);
             var arr = response.data.data.map((res) => res.lessons);
             var syl = response.data.data.map((syllabus) => syllabus.id);
-            console.log(syl);
+            console.log("dassadasdsa", response.data.data);
             fetchAllLessons(arr);
             fetchSyllabusLesson(arr, syl);
+            response.data.data.every((syl) => {
+                syl.lessons.every((lesson) => {
+                    lesson.assessments.every((assess) => {
+                        console.log("asssseeeeeeeee", assess);
+                        if (!assess.attempts) {
+                            console.log("asssseeeeeeeee", assess);
+
+                            setUnFinishedCourse([...unFinishedCourse, syl]);
+                            // setHideCourse(true)
+                            return false;
+                        }
+                        setFinishedCourse([...finishedCourse, syl]);
+                        return true;
+                    });
+                    return true;
+                });
+                return true;
+            });
+            console.log(finishedCourse.length);
+            console.log("dassadasdsa2", response.data.data);
+
+            setUnFinishedCourse(
+                response.data.data.slice(finishedCourse.length)
+            );
         } catch (e) {}
     };
+
+    console.log("finnnnn", finishedCourse);
+    console.log("unfin", unFinishedCourse);
 
     const fetchAllLessons = (response) => {
         setAllLessons([]);
@@ -319,11 +349,13 @@ const Learning = React.memo(function Learning({ match }) {
                                             {syllabus?.map(
                                                 (course) => (
                                                     console.log(hideCourse),
-                                                    hideCourse ? (
+                                                    (
+                                                        // hideCourse ? (
                                                         <>
                                                             <div className="lesson__title">
                                                                 {course.title}
                                                             </div>
+
                                                             {course?.lessons
                                                                 ?.length
                                                                 ? course.lessons?.map(
@@ -332,6 +364,9 @@ const Learning = React.memo(function Learning({ match }) {
                                                                           i
                                                                       ) => (
                                                                           <>
+                                                                              {console.log(
+                                                                                  lesson
+                                                                              )}
                                                                               <Link
                                                                                   to={`/learn/${match.params.course_id}/lesson/${lesson.id}`}
                                                                               >
@@ -357,18 +392,7 @@ const Learning = React.memo(function Learning({ match }) {
                                                                                                 <Link
                                                                                                     to={`/learn/${match.params.course_id}/assessment/${assess.id}`}
                                                                                                 >
-                                                                                                    <div
-                                                                                                        className="course__disp"
-                                                                                                        onLoad={() => {
-                                                                                                            if (
-                                                                                                                assess.attempts
-                                                                                                            ) {
-                                                                                                                setHideCourse(
-                                                                                                                    false
-                                                                                                                );
-                                                                                                            }
-                                                                                                        }}
-                                                                                                    >
+                                                                                                    <div className="course__disp">
                                                                                                         <div className="col-md-12 p-0">
                                                                                                             <div className="course__title">
                                                                                                                 <i className="fas fa-pen-fancy mr-2"></i>
@@ -388,9 +412,10 @@ const Learning = React.memo(function Learning({ match }) {
                                                                   )
                                                                 : null}
                                                         </>
-                                                    ) : (
-                                                        <div>Hello </div>
                                                     )
+                                                    // ) : (
+                                                    //     <div>Hello </div>
+                                                    // )
                                                 )
                                             )}
                                         </div>

@@ -63,7 +63,7 @@ function AllCourses() {
         try {
             const response = await axios.get(url + "/wishlist", {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
 

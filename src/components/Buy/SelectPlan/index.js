@@ -8,7 +8,7 @@ import { useStateValue } from "../../../StateProvider";
 
 function SelectPlan({ match }) {
     const [prices, setPrices] = useState([]);
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     const [{ cartLength }, dispatch] = useStateValue();
 

@@ -15,7 +15,7 @@ function Checkout() {
 
     const [{}, dispatch] = useStateValue();
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         fetchCartData();

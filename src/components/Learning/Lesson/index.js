@@ -35,7 +35,7 @@ function Lesson({ match }) {
         try {
             const response = await Axios.get(`${url}/my-profile`, {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             console.log(response.data.data.courses);

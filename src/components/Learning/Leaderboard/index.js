@@ -26,7 +26,7 @@ const Leaderboard = ({ match }) => {
 
     const rem = 0;
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

@@ -55,7 +55,7 @@ function App() {
                     <Route path="/login" exact component={Login} />
                     <Route path="/wishlist" exact component={Wishlist} />
 
-                    {localStorage.getItem("Token") &&
+                    {localStorage.getItem("pn_en") &&
                     localStorage.getItem("resusid") &&
                     localStorage.getItem("res_us") ? (
                         <Route path="/profile" exact component={Profile} />

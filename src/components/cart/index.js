@@ -19,7 +19,7 @@ const Cart = ({ match }) => {
     const [modalShow, setModalShow] = useState(false);
     const [wishlistId, setWishlistId] = useState([]);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         fetchData();
@@ -35,7 +35,7 @@ const Cart = ({ match }) => {
         try {
             const response = await Axios.get(url + "/wishlist", {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             const data = response.data.data.map(

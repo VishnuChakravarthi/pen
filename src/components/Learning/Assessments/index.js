@@ -13,7 +13,7 @@ function Asses({ match }) {
     const [results, setResults] = useState({});
     const [height, setHeight] = useState(false);
     const [assessmentLabel, setAssessmentLabel] = useState("assess0");
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     const [{ darkMode }, dispatch] = useStateValue();
 

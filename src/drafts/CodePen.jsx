@@ -35,7 +35,7 @@ function CodePen() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Basic " + localStorage.getItem("Token"),
+                Authorization: "Basic " + localStorage.getItem("pn_en"),
             },
             body: JSON.stringify(data),
         };
@@ -67,7 +67,7 @@ function CodePen() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Basic " + localStorage.getItem("Token"),
+                Authorization: "Basic " + localStorage.getItem("pn_en"),
             },
             body: JSON.stringify(data),
         };
@@ -99,7 +99,7 @@ function CodePen() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Basic " + localStorage.getItem("Token"),
+                Authorization: "Basic " + localStorage.getItem("pn_en"),
             },
             body: JSON.stringify(data),
         };
@@ -140,7 +140,7 @@ function CodePen() {
         <React.Fragment>
             <Navbar></Navbar>
             <React.Fragment>
-                <div className="container" style={{paddingTop: "81px"}}>
+                <div className="container" style={{ paddingTop: "81px" }}>
                     <div id="wrapper" className="p-5">
                         <div className="content">
                             <div className="tabs">

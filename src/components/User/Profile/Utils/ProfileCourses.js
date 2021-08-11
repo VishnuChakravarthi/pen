@@ -16,7 +16,7 @@ function ProfileCourses({ spinner, setSpinner }) {
     const [badges, setBadges] = useState([]);
     // const [currentSyllabus, setCurrentSyllabus] = useState();
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         getCourses();

@@ -29,7 +29,7 @@ function Wishlist({ fromProfile }) {
     const coursesPerPage = 10;
     const [{}, dispatch] = useStateValue();
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         // fetchCategories();
@@ -91,7 +91,7 @@ function Wishlist({ fromProfile }) {
         try {
             const response = await axios.get(`${url}/my-profile`, {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             console.log(response.data.data.courses);

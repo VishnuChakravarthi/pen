@@ -13,7 +13,7 @@ function SingleCourseHeader(props) {
     const [wishlist, setWishlist] = useState([]);
     const [userCourses, setUserCourses] = useState([]);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
     const userId = localStorage.getItem("resusid");
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function SingleCourseHeader(props) {
         try {
             const response = await axios.get(`${url}/my-profile`, {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             console.log(response.data.data.courses);
@@ -166,7 +166,7 @@ function SingleCourseHeader(props) {
                                         className="mr-4 btn btn-default"
                                         onClick={async () => {
                                             const token =
-                                                localStorage.getItem("Token");
+                                                localStorage.getItem("pn_en");
                                             await axios({
                                                 method: "post",
                                                 url: `wishlist`,

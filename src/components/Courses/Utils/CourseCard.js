@@ -24,7 +24,7 @@ function CourseCard({
     const [modalShow, setModalShow] = useState(false);
     const [userCourses, setUserCourses] = useState([]);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     const [{ cartLength }, dispatch] = useStateValue();
 
@@ -133,7 +133,7 @@ function CourseCard({
         try {
             const response = await axios.get(`${url}/my-profile`, {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             // console.log(response.data.data.courses);

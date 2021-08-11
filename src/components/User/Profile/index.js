@@ -19,6 +19,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Helmet } from "react-helmet";
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    getLatLng,
+} from "react-places-autocomplete";
 
 function Profile() {
     const [section, setSection] = useState("profile");
@@ -31,7 +35,7 @@ function Profile() {
     const [allPoints, setAllPoints] = useState([]);
     const [mainSpinner, setMainSpinner] = useState(false);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     console.log("fileeeeeee", file);
 
@@ -61,6 +65,25 @@ function Profile() {
         })();
     }, []);
 
+    const renderFunc = ({
+        getInputProps,
+        getSuggestionItemProps,
+        suggestions,
+    }) => (
+        <div className="autocomplete-root">
+            {console.log(getInputProps())}
+            <input {...getInputProps()} />
+            <div className="autocomplete-dropdown-container">
+                {/* {loading && <div>Loading...</div>} */}
+                {suggestions.map((suggestion) => (
+                    <div {...getSuggestionItemProps(suggestion)}>
+                        <span>{suggestion.description}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+
     console.log(attribs);
 
     const calculatePoints = () => {
@@ -85,7 +108,7 @@ function Profile() {
             headers: { Authorization: `Basic ${token}` },
         }).then(function (res) {
             console.log(res.data);
-            localStorage.removeItem("Token");
+            localStorage.removeItem("pn_en");
             localStorage.removeItem("resusid");
             localStorage.removeItem("res_us");
             window.location.href = "/";
@@ -205,7 +228,7 @@ function Profile() {
                     text: "Password updated successfully",
                     icon: "success",
                 });
-                localStorage.removeItem("Token");
+                localStorage.removeItem("pn_en");
                 window.location.href = "/login";
             })
             .catch((e) => {
@@ -589,6 +612,21 @@ function Profile() {
                                                 >
                                                     State
                                                 </label>
+                                                {/* <PlacesAutocomplete
+                                                    value={
+                                                        profile.state !== "null"
+                                                            ? profile.state
+                                                            : ""
+                                                    }
+                                                    onChange={(e) =>
+                                                        setProfile({
+                                                            ...profile,
+                                                            state: e,
+                                                        })
+                                                    }
+                                                >
+                                                    {renderFunc}
+                                                </PlacesAutocomplete> */}
                                                 <div className="col-sm-10">
                                                     <input
                                                         type="text"

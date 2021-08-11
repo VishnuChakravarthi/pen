@@ -18,7 +18,7 @@ function BookmarkModal({
     const [bookmarkName, setBookmarkName] = useState("");
     const [error, setError] = useState(false);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     const addBookmark = async (type) => {
         if (type === "video") {

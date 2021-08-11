@@ -30,7 +30,7 @@ function GiveAndTake() {
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
     // const [fileimage, setFileimages] = useState([File]);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     const files = acceptedFiles.map((file) => (
         <li key={file.path}>
@@ -260,7 +260,7 @@ function GiveAndTake() {
                 .post(`${url}/give-course`, formdata, {
                     headers: {
                         //   "Content-Type": "application/json",
-                        Authorization: "Basic " + localStorage.getItem("Token"),
+                        Authorization: "Basic " + localStorage.getItem("pn_en"),
                     },
                 })
                 .then((_) => {

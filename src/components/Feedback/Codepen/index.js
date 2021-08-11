@@ -35,7 +35,7 @@ function Codepen() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Basic " + localStorage.getItem("Token"),
+                Authorization: "Basic " + localStorage.getItem("pn_en"),
             },
             body: JSON.stringify(data),
         };
@@ -67,7 +67,7 @@ function Codepen() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Basic " + localStorage.getItem("Token"),
+                Authorization: "Basic " + localStorage.getItem("pn_en"),
             },
             body: JSON.stringify(data),
         };
@@ -99,7 +99,7 @@ function Codepen() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Basic " + localStorage.getItem("Token"),
+                Authorization: "Basic " + localStorage.getItem("pn_en"),
             },
             body: JSON.stringify(data),
         };

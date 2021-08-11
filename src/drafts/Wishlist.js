@@ -49,7 +49,7 @@ function Wishlist() {
     //         }
     //     } else {
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
     //     }
     // }
 

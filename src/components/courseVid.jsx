@@ -19,7 +19,7 @@ const CourseVid = () => {
     };
 
     const getlesson = async () => {
-        const token = localStorage.getItem("Token");
+        const token = localStorage.getItem("pn_en");
         const syllabus_id = 1;
         await axios({
             method: "get",

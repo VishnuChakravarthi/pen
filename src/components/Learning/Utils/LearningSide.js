@@ -19,7 +19,7 @@ function LearningSide({ id, tab, setDisplaySide, displaySide }) {
     const [definition, setDefinition] = useState([]);
     const [sideBar, setSideBar] = useState(false);
     // const [displaySide, setDisplaySide] = useState(false);
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     // const client = Owlbot("e34a031b90084bafe592a895c924acd322a56b58");
     const owlToken = "e34a031b90084bafe592a895c924acd322a56b58";

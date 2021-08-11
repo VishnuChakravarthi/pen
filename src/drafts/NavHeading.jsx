@@ -10,7 +10,7 @@ function NavHeading(props) {
     const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
-        localStorage.getItem("Token") ? setLoggedIn(true) : setLoggedIn(false);
+        localStorage.getItem("pn_en") ? setLoggedIn(true) : setLoggedIn(false);
     }, []);
 
     return (
@@ -55,7 +55,7 @@ function NavHeading(props) {
                                         className="mr-4 btn btn-default"
                                         onClick={async () => {
                                             const token =
-                                                localStorage.getItem("Token");
+                                                localStorage.getItem("pn_en");
                                             await axios({
                                                 method: "post",
                                                 url: `wishlist`,

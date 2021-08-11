@@ -21,7 +21,7 @@ function CourseraProfile() {
             headers: { Authorization: `Basic ${token}` },
         }).then(function (res) {
             console.log(res.data);
-            localStorage.removeItem("Token");
+            localStorage.removeItem("pn_en");
             window.location.href = "/";
         });
     };

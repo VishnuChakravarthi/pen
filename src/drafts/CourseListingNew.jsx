@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import { url } from "../components/api";
 import axios from "axios";
 
-
 function FreeCourseListing() {
     // const { search } = queryString.parse(location.search);
     const [modalShow, setModalShow] = useState(false);
@@ -14,7 +13,6 @@ function FreeCourseListing() {
     const [cat, setCat] = useState([]);
     const [skill, setSkill] = useState([]);
     const [key, SetKey] = useState(search ? search : "");
-
 
     function coursefn(e) {
         // window.location.href = `/course-info?id=${e}`;
@@ -92,12 +90,12 @@ function FreeCourseListing() {
                 } else {
                     setCourses([]);
                 }
-            } catch (error) { }
+            } catch (error) {}
         }
     }
 
     async function searchFilterfn(e) {
-        const key1 = e
+        const key1 = e;
         if (key1) {
             try {
                 const response = await fetch(
@@ -110,7 +108,7 @@ function FreeCourseListing() {
                 } else {
                     setCourses([]);
                 }
-            } catch (error) { }
+            } catch (error) {}
         } else {
             try {
                 const response = await fetch(url + "/view-all-courses");
@@ -124,18 +122,18 @@ function FreeCourseListing() {
         }
     }
     const addtocart = async (e) => {
-        const token = localStorage.getItem("Token");
+        const token = localStorage.getItem("pn_en");
         await axios({
-            method: 'post',
+            method: "post",
             url: `${url}/cart`,
-            headers: { 'Authorization': `Basic ${token}` },
+            headers: { Authorization: `Basic ${token}` },
             data: {
-                course_id: `${e}`
-            }
+                course_id: `${e}`,
+            },
         }).then(function (res) {
             console.log(res.data);
         });
-    }
+    };
 
     useEffect(() => {
         // console.log("yydyyd", queryString);
@@ -147,7 +145,6 @@ function FreeCourseListing() {
             // searchFilterfn(search);
         }
 
-
         if (id) {
             document.querySelector("#customSwitch2").checked = true;
             courses = url + "/view-all-courses/price/FREE";
@@ -156,13 +153,12 @@ function FreeCourseListing() {
         }
 
         if (id) {
-
             const fetchData = async () => {
                 try {
                     const response = await fetch(courses);
                     const data = await response.json();
                     console.log(data, "datas");
-                    (data.data) ? setCourses(data.data) : setCourses([]);
+                    data.data ? setCourses(data.data) : setCourses([]);
                 } catch (error) {
                     console.log(error);
                     // setCourses([]);
@@ -190,11 +186,9 @@ function FreeCourseListing() {
                     // setSkill([]);
                 }
             };
-            fetchData().then(suc => {
-                console.log(search)
-                if (search && search != "")
-                    searchFilterfn(search)
-
+            fetchData().then((suc) => {
+                console.log(search);
+                if (search && search != "") searchFilterfn(search);
             });
             fetchData2();
             fetchData3();
@@ -219,7 +213,11 @@ function FreeCourseListing() {
             stars.push(star());
         }
         return (
-            <a rel="noopener noreferrer" href={`/course-info?id=${item.course_id}`} target="_blank">
+            <a
+                rel="noopener noreferrer"
+                href={`/course-info?id=${item.course_id}`}
+                target="_blank"
+            >
                 <div
                     className="col-lg-12 all-course-single"
                     style={
@@ -277,10 +275,10 @@ function FreeCourseListing() {
                                             Rs {item.price1}
                                         </div>
                                     ) : (
-                                            <div className="tc_price float-right fn-414">
-                                                Free
+                                        <div className="tc_price float-right fn-414">
+                                            Free
                                         </div>
-                                        )}
+                                    )}
 
                                     <ul className="tc_review float-right fn-414">
                                         {stars}({item.rating})
@@ -414,8 +412,14 @@ function FreeCourseListing() {
                                                                 onChange={(
                                                                     e
                                                                 ) => {
-                                                                    SetKey(e.target.value)
-                                                                    searchFilterfn(e.target.value);
+                                                                    SetKey(
+                                                                        e.target
+                                                                            .value
+                                                                    );
+                                                                    searchFilterfn(
+                                                                        e.target
+                                                                            .value
+                                                                    );
                                                                 }}
                                                             />
                                                             <button
@@ -633,46 +637,46 @@ function FreeCourseListing() {
                                                         <div className="ui_kit_checkbox">
                                                             {cat
                                                                 ? cat?.map(
-                                                                    (
-                                                                        item,
-                                                                        index
-                                                                    ) => (
-                                                                            <div className="custom-control custom-checkbox">
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    className="custom-control-input"
-                                                                                    id={
-                                                                                        item.category_id
-                                                                                    }
-                                                                                    onClick={(
-                                                                                        e
-                                                                                    ) => {
-                                                                                        fetchCatfn(
-                                                                                            e
-                                                                                        );
-                                                                                    }}
-                                                                                />
-                                                                                <label
-                                                                                    className="custom-control-label"
-                                                                                    for={
-                                                                                        item.category_id
-                                                                                    }
-                                                                                >
-                                                                                    {
-                                                                                        item.category
-                                                                                    }
-                                                                                    <span className="float-right">
-                                                                                        (
+                                                                      (
+                                                                          item,
+                                                                          index
+                                                                      ) => (
+                                                                          <div className="custom-control custom-checkbox">
+                                                                              <input
+                                                                                  type="checkbox"
+                                                                                  className="custom-control-input"
+                                                                                  id={
+                                                                                      item.category_id
+                                                                                  }
+                                                                                  onClick={(
+                                                                                      e
+                                                                                  ) => {
+                                                                                      fetchCatfn(
+                                                                                          e
+                                                                                      );
+                                                                                  }}
+                                                                              />
+                                                                              <label
+                                                                                  className="custom-control-label"
+                                                                                  for={
+                                                                                      item.category_id
+                                                                                  }
+                                                                              >
+                                                                                  {
+                                                                                      item.category
+                                                                                  }
+                                                                                  <span className="float-right">
+                                                                                      (
                                                                                       {
-                                                                                            item.courses_count
-                                                                                        }
+                                                                                          item.courses_count
+                                                                                      }
 
-                                                                                        )
+                                                                                      )
                                                                                   </span>
-                                                                                </label>
-                                                                            </div>
-                                                                        )
-                                                                )
+                                                                              </label>
+                                                                          </div>
+                                                                      )
+                                                                  )
                                                                 : ""}
 
                                                             {/* <div className="custom-control custom-checkbox">

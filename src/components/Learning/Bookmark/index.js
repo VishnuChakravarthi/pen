@@ -17,7 +17,7 @@ function BookMark({ match }) {
     const [pdf, setPdf] = useState([]);
     const [ppt, setPpt] = useState([]);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         if (document.getElementById("bookmark")) {

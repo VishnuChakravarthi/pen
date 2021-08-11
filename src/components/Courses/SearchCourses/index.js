@@ -25,7 +25,7 @@ function SearchCourses({ match }) {
     console.log(commonSearchCourses);
     console.log(allCoursesStore);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         fetchCourses();
@@ -37,7 +37,7 @@ function SearchCourses({ match }) {
         try {
             const response = await axios.get(url + "/wishlist", {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             const data = response.data.data.map(

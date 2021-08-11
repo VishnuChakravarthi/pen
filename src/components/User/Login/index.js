@@ -8,6 +8,7 @@ import { useStateValue } from "../../../StateProvider";
 import { Modal, TextField } from "@material-ui/core";
 import Axios from "axios";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 // import LinkedinSignIn from "./LinkedinSignIn";
 
 function Login() {
@@ -113,7 +114,55 @@ function Login() {
                                             );
                                             const data = await response.json();
                                             console.log(data);
-                                            localStorage.setItem("Token", hash);
+
+                                            if (
+                                                data.error ===
+                                                "The Account has loggedin already with other device, Please Logout from the other Device"
+                                            ) {
+                                                return swal({
+                                                    title: "Already logged in?",
+                                                    text: "Your account is logged in in another device. Please logout of all other devices to log in",
+                                                    icon: "warning",
+                                                    buttons: [
+                                                        "No, cancel it!",
+                                                        "Yes!",
+                                                    ],
+                                                    dangerMode: true,
+                                                }).then(async function (
+                                                    isConfirm
+                                                ) {
+                                                    if (isConfirm) {
+                                                        await axios({
+                                                            method: "post",
+                                                            url: "http://epen.nyxwolves.tech/api/logout",
+                                                            headers: {
+                                                                Authorization: `Basic ${hash}`,
+                                                            },
+                                                        }).then(function (res) {
+                                                            console.log(
+                                                                res.data
+                                                            );
+                                                            localStorage.removeItem(
+                                                                "pn_en"
+                                                            );
+                                                            localStorage.removeItem(
+                                                                "resusid"
+                                                            );
+                                                            localStorage.removeItem(
+                                                                "res_us"
+                                                            );
+
+                                                            swal({
+                                                                title: "Logged out!",
+                                                                text: "You can proceed to log in",
+                                                                icon: "success",
+                                                            });
+                                                        });
+                                                    }
+                                                });
+                                            }
+
+                                            localStorage.setItem("pn_en", hash);
                                             localStorage.setItem(
                                                 "resusid",
                                                 data.data.id
@@ -137,6 +186,8 @@ function Login() {
 
                                             window.location.href = "/";
                                         } catch (error) {
+                                            console.log(error);
+
                                             swal({
                                                 text: "Unauthorized email or password",
                                                 icon: "warning",

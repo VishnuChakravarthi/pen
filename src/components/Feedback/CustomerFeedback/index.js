@@ -7,7 +7,7 @@ import swal from "sweetalert";
 import { Helmet } from "react-helmet";
 
 function CustomerFeedback() {
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

@@ -20,7 +20,7 @@ function Discussion({ match }) {
     const [questionDesc, setQuestionDesc] = useState("");
     const [showReply, setShowReply] = useState(0);
 
-    const token = localStorage.getItem("Token");
+    const token = localStorage.getItem("pn_en");
 
     useEffect(() => {
         if (document.getElementById("discussion")) {

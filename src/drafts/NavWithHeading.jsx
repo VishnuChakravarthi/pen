@@ -12,7 +12,7 @@ function NavWithHeading(props) {
     const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
-        localStorage.getItem("Token") ? setLoggedIn(true) : setLoggedIn(false);
+        localStorage.getItem("pn_en") ? setLoggedIn(true) : setLoggedIn(false);
     }, []);
     return (
         <React.Fragment>
@@ -106,8 +106,7 @@ function NavWithHeading(props) {
                                                                     <div
                                                                         className="dropdown-menu vertical-megamenu"
                                                                         style={{
-                                                                            width:
-                                                                                "748px",
+                                                                            width: "748px",
                                                                         }}
                                                                     >
                                                                         <div className="dropdown-menu-inner">

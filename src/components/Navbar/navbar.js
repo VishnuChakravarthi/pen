@@ -22,7 +22,9 @@ const Navbar = (props) => {
     // var token;
 
     useEffect(() => {
-        localStorage.getItem("Token") ? setLoggedIn(true) : setLoggedIn(false);
+        localStorage.getItem("pn_en") && localStorage.getItem("res_us")
+            ? setLoggedIn(true)
+            : setLoggedIn(false);
         console.log(props);
     }, []);
 
@@ -60,7 +62,7 @@ const Navbar = (props) => {
             method: "get",
             url: "http://epen.nyxwolves.tech/api/view-categories",
             headers: {
-                Authorization: `Basic ${localStorage.getItem("Token")}`,
+                Authorization: `Basic ${localStorage.getItem("pn_en")}`,
             },
         }).then((res) => {
             console.log(res.data.data, "category");
@@ -72,7 +74,7 @@ const Navbar = (props) => {
         try {
             const response = await Axios.get(url + "/cart", {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             console.log(response.data.data, "datas");
@@ -95,7 +97,7 @@ const Navbar = (props) => {
         try {
             const response = await axios.get(url + "/wishlist", {
                 headers: {
-                    Authorization: `Basic ${localStorage.getItem("Token")}`,
+                    Authorization: `Basic ${localStorage.getItem("pn_en")}`,
                 },
             });
             const data = response.data.data.map(

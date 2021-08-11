@@ -14,13 +14,11 @@ function GiveAndTakes() {
     const [table, setTable] = useState("");
     const [course, setCourse] = useState("");
     const [modal, setModal] = useState(false);
-    const[giveCourseTitle,setGiveCourseTitle]=useState("none");
-    const[giveCourseDescription,setGiveCourseDescription]=useState("");
+    const [giveCourseTitle, setGiveCourseTitle] = useState("none");
+    const [giveCourseDescription, setGiveCourseDescription] = useState("");
     const toggle = () => setModal(!modal);
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
-    const [fileimage,setFileimages]=useState([File])
-
-    
+    const [fileimage, setFileimages] = useState([File]);
 
     const files = acceptedFiles.map((file) => (
         <li key={file.path}>
@@ -331,7 +329,8 @@ function GiveAndTakes() {
                                                 <a href="#">
                                                     <i class="flaticon-comment"></i>
                                                 </a>
-                                                Swal  </li>
+                                                Swal{" "}
+                                            </li>
                                             <li class="list-inline-item">
                                                 <a href="#">25</a>
                                             </li>
@@ -369,7 +368,8 @@ function GiveAndTakes() {
                                                 <a href="#">(5)</a>
                                             </li>
                                         </ul>
-                                    </div>buySwal
+                                    </div>
+                                    buySwal
                                     <div className="d-flex justify-content-end">
                                         <button
                                             className="btn btn-primary mt-3"
@@ -388,14 +388,11 @@ function GiveAndTakes() {
         setCourse(startup);
     }, []);
     function buySwal() {
-
-
         return swal({
             text: "Succesfully uploaded Course All the best",
             icon: "success",
         });
     }
-    
 
     function populateCourse() {
         // const renderCourse = () => {
@@ -488,30 +485,29 @@ function GiveAndTakes() {
         // };
 
         // setCourse(renderCourse);
-        
-        const formdata=new FormData();
-        formdata.append('title',giveCourseTitle);
-        formdata.append('description',giveCourseDescription);
-        formdata.append('file',acceptedFiles)
-        
-         axios.post(`${url}/give-course`,formdata,{
-            headers:{
-             //   "Content-Type": "application/json",
-                Authorization: "Basic " + localStorage.getItem("Token")
-            } 
-         })
-        
-         toggle();
-         return swal({
-             text: "Thank you for submitting the content. We will get back to you within 2-3 business days",
-             icon: "success",
-         });
 
+        const formdata = new FormData();
+        formdata.append("title", giveCourseTitle);
+        formdata.append("description", giveCourseDescription);
+        formdata.append("file", acceptedFiles);
+
+        axios.post(`${url}/give-course`, formdata, {
+            headers: {
+                //   "Content-Type": "application/json",
+                Authorization: "Basic " + localStorage.getItem("pn_en"),
+            },
+        });
+
+        toggle();
+        return swal({
+            text: "Thank you for submitting the content. We will get back to you within 2-3 business days",
+            icon: "success",
+        });
     }
 
     function giveCoursefn(e) {
         console.log(e.target.value);
-        setGiveCourseTitle(e.target.value)
+        setGiveCourseTitle(e.target.value);
         if (e.target.value != "none") {
             if (e.target.value == "others") {
                 const pointsTable = () => {
@@ -573,17 +569,23 @@ function GiveAndTakes() {
             <NavMain />
             <React.Fragment>
                 <Modal isOpen={modal} toggle={toggle} centered={true}>
-                    <ModalHeader toggle={toggle}>
-                    Start giving
-                    </ModalHeader>
+                    <ModalHeader toggle={toggle}>Start giving</ModalHeader>
                     <ModalBody>
-
-                        
-                        
-                        
-                        <h4 class="mb20" for="desc">Description</h4>
-                        <textarea id="desc" type="text" value={giveCourseDescription} style={{width:"100%"}} onChange={e=>{setGiveCourseDescription(e.target.value)}}></textarea>
-                        <h4 class="mb20" for="desc">Attachment</h4>
+                        <h4 class="mb20" for="desc">
+                            Description
+                        </h4>
+                        <textarea
+                            id="desc"
+                            type="text"
+                            value={giveCourseDescription}
+                            style={{ width: "100%" }}
+                            onChange={(e) => {
+                                setGiveCourseDescription(e.target.value);
+                            }}
+                        ></textarea>
+                        <h4 class="mb20" for="desc">
+                            Attachment
+                        </h4>
                         <div class="col-lg-4">
                             <div class="shortcode_widget_checkbox">
                                 <div class="ui_kit_checkbox">
@@ -654,7 +656,7 @@ function GiveAndTakes() {
                     </ModalFooter>
                 </Modal>
 
-                <div className="mb-3" style={{marginTop: "100px"}}>
+                <div className="mb-3" style={{ marginTop: "100px" }}>
                     <div className="container-fluid">
                         {/* <Tilt
               className="Tilt"
@@ -695,58 +697,61 @@ function GiveAndTakes() {
                                     </div>
                                     <Card.Body>
                                         <Card.Text>
-                                        <div class="ui_kit_select_box">
-                                            {/* <h4>Select Course</h4> */}
-                                            <select
-                                                class="selectpicker custom-select-lg mb-3"
-                                                onChange={giveCoursefn}
-                                            >
-                                                <option value="0">Select Course</option>
-                                                <option value="Business Writing">
-                                                    Business Writing
-                                                </option>
-                                                <option value="Best Practices in Project Management">
-                                                    Best Practices in Project Management
-                                                </option>
-                                                <option value="Python Development">
-                                                    Python Development
-                                                </option>
-                                                <option value="Big Data">
-                                                    Big Data
-                                                </option>
-                                                <option value="Data Science">
-                                                    Data Science
-                                                </option>
-                                                <option value="IOT">
-                                                    IOT
-                                                </option>
-                                                <option value="5G">
-                                                    5G
-                                                </option>
-                                                <option value="Basics of Music">
-                                                    Basics of Music
-                                                </option>
-                                                <option value="Block Chain Technology">
-                                                Block Chain Technology
-                                                </option>
-                                                <option value="Tableau">
-                                                Tableau
-                                                </option>
-                                                <option value="Branding">
-                                                Branding
-                                                </option>
-                                                <option value="Basics of programming">
-                                                Basics of programming
-                                                </option>
-                                                <option value="Film Making">
-                                                Film Making
-                                                </option>
-                                                <option value="Other">
-                                                Other
-                                                </option>
-                                            </select>
-                                        </div>
-                                        {table}
+                                            <div class="ui_kit_select_box">
+                                                {/* <h4>Select Course</h4> */}
+                                                <select
+                                                    class="selectpicker custom-select-lg mb-3"
+                                                    onChange={giveCoursefn}
+                                                >
+                                                    <option value="0">
+                                                        Select Course
+                                                    </option>
+                                                    <option value="Business Writing">
+                                                        Business Writing
+                                                    </option>
+                                                    <option value="Best Practices in Project Management">
+                                                        Best Practices in
+                                                        Project Management
+                                                    </option>
+                                                    <option value="Python Development">
+                                                        Python Development
+                                                    </option>
+                                                    <option value="Big Data">
+                                                        Big Data
+                                                    </option>
+                                                    <option value="Data Science">
+                                                        Data Science
+                                                    </option>
+                                                    <option value="IOT">
+                                                        IOT
+                                                    </option>
+                                                    <option value="5G">
+                                                        5G
+                                                    </option>
+                                                    <option value="Basics of Music">
+                                                        Basics of Music
+                                                    </option>
+                                                    <option value="Block Chain Technology">
+                                                        Block Chain Technology
+                                                    </option>
+                                                    <option value="Tableau">
+                                                        Tableau
+                                                    </option>
+                                                    <option value="Branding">
+                                                        Branding
+                                                    </option>
+                                                    <option value="Basics of programming">
+                                                        Basics of programming
+                                                    </option>
+                                                    <option value="Film Making">
+                                                        Film Making
+                                                    </option>
+                                                    <option value="Other">
+                                                        Other
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            {table}
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
@@ -774,7 +779,7 @@ function GiveAndTakes() {
                 </div>
                 <div className="container">
                     <div className="row  align-items-center">
-                        <div className="col-sm-6" style={{zIndex: "-1"}}>
+                        <div className="col-sm-6" style={{ zIndex: "-1" }}>
                             <img
                                 src="./images/2085674.png"
                                 alt=""
