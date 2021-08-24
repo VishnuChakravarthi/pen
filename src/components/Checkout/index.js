@@ -81,40 +81,41 @@ function Checkout() {
             .reduce((total, price) => total + Number(price.course.price1), 0);
     };
 
-    // const purchase = async () => {
-    //     for (let i = 0; i < courses.length; i++) {
-    //         const postData = {
-    //             course_id: courses[i].course.course_id,
-    //             pack: 0,
-    //             price: courses[i].course.price1,
-    //             points: 0,
-    //         };
-    //         try {
-    //             const response = await Axios.post(`${url}/purchase`, postData, {
-    //                 headers: {
-    //                     Authorization: `Basic ${token}`,
-    //                 },
-    //             });
+    const purchase = async (e) => {
+        e.preventDefault();
+        for (let i = 0; i < courses.length; i++) {
+            const postData = {
+                course_id: courses[i].course.course_id,
+                pack: 0,
+                price: courses[i].course.price1,
+                points: 0,
+            };
+            try {
+                const response = await Axios.post(`${url}/purchase`, postData, {
+                    headers: {
+                        Authorization: `Basic ${token}`,
+                    },
+                });
 
-    //             console.log(response.data);
-    //         } catch (e) {
-    //             console.log(e);
-    //             return swal({
-    //                 text: "Purchase unsuccessful",
-    //                 icon: "error",
-    //             });
-    //         }
-    //     }
-    //     dispatch({
-    //         type: "SET_CART",
-    //         cartLength: 0,
-    //     });
-    //     swal({
-    //         text: "Purchase successful",
-    //         icon: "success",
-    //     });
-    //     return history.push("/courses");
-    // };
+                console.log(response.data);
+            } catch (e) {
+                console.log(e);
+                return swal({
+                    text: "Purchase unsuccessful",
+                    icon: "error",
+                });
+            }
+        }
+        dispatch({
+            type: "SET_CART",
+            cartLength: 0,
+        });
+        swal({
+            text: "Purchase successful",
+            icon: "success",
+        });
+        return history.push("/courses");
+    };
 
     return (
         // <div>
@@ -457,7 +458,7 @@ function Checkout() {
                                     <button
                                         type="submit"
                                         className="btn dbxshad btn-lg btn-thm3 circle btn-block"
-                                        // onClick={purchase}
+                                        onClick={purchase}
                                     >
                                         Place Order
                                     </button>

@@ -494,7 +494,7 @@ const Learning = React.memo(function Learning({ match }) {
                                                                     </button> */}
                                                                 </div>
                                                             ) : null}
-                                                            {lesson.file_type ===
+                                                            {lesson.file_extension ===
                                                             "ppt" ? (
                                                                 <div
                                                                     style={{
@@ -533,7 +533,7 @@ const Learning = React.memo(function Learning({ match }) {
                                                                     </button> */}
                                                                 </div>
                                                             ) : null}
-                                                            {lesson.file_type ===
+                                                            {lesson.file_extension ===
                                                             "pdf" ? (
                                                                 <div
                                                                     style={{

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a0f46d82-8d54-47fa-961d-d09564a069c2/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/thepenapp",
+    "appService.deploySubpath": "build"
+}

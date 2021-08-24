@@ -130,7 +130,14 @@ const Navbar = (props) => {
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             history.push(`/courses/${searchTerm}`);
+            setSearchTerm("");
         }
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        history.push(`/courses/${searchTerm}`);
+        setSearchTerm("");
     };
 
     const categoryFilter = (category_id) => {
@@ -316,8 +323,10 @@ const Navbar = (props) => {
                                     }
                                     onKeyDown={handleKeyDown}
                                 />
-                                <Link
-                                    to={`/courses/${searchTerm}`}
+                                <a
+                                    rel="noreferrer noopener"
+                                    href=""
+                                    onClick={handleSearch}
                                     className="col-2 p-0"
                                 >
                                     <button
@@ -325,16 +334,13 @@ const Navbar = (props) => {
                                         type="button"
                                         style={{ height: "43px" }}
                                     >
-                                        <i
-                                            class="fas fa-search"
-                                            onClick={clearSearch}
-                                        ></i>
+                                        <i class="fas fa-search"></i>
                                         {/* <span
                                             className="flaticon-magnifying-glass"
                                             onClick={clearSearch}
                                         ></span> */}
                                     </button>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>

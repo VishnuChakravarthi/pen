@@ -83,9 +83,11 @@ function AllCourses() {
     const updateSearch = (searchval) => {
         // console.log(searchval);
         setSearchTerm(searchval);
+        // setSearchTerm("");
     };
 
     useEffect(() => {
+        // if (searchTerm !== "") {
         setCourses(
             allCourses?.filter((course) => {
                 return course.course_title
@@ -93,6 +95,7 @@ function AllCourses() {
                     .includes(searchTerm.toLowerCase());
             })
         );
+        // }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchTerm]);
 
@@ -125,11 +128,13 @@ function AllCourses() {
         setCurrentPage(number);
     };
 
-    const dispatchCourses = () => {
+    const dispatchCourses = (e) => {
+        e.preventDefault();
         dispatch({
             type: "SET_SEARCH_TERM",
             courses: courses,
         });
+        setSearchTerm("");
     };
 
     return (
@@ -190,20 +195,19 @@ function AllCourses() {
                                                             <span className="flaticon-magnifying-glass"></span>
                                                         </button> */}
 
-                                                        <Link
-                                                            to={`/courses/${searchTerm}`}
+                                                        <a
+                                                            rel="noreferrer noopener"
+                                                            href=""
+                                                            onClick={
+                                                                dispatchCourses
+                                                            }
                                                             className="col-2 p-0"
                                                         >
                                                             <button
                                                                 className="btn"
                                                                 type="button"
                                                             >
-                                                                <i
-                                                                    class="fas fa-search"
-                                                                    onClick={
-                                                                        dispatchCourses
-                                                                    }
-                                                                ></i>
+                                                                <i class="fas fa-search"></i>
                                                                 {/* <span
                                                                     className="flaticon-magnifying-glass"
                                                                     onClick={
@@ -211,7 +215,7 @@ function AllCourses() {
                                                                     }
                                                                 ></span> */}
                                                             </button>
-                                                        </Link>
+                                                        </a>
                                                     </form>
                                                 </div>
                                             </li>
