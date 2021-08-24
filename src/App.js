@@ -31,6 +31,7 @@ import Navbar from "./components/Partials/Navbar";
 import ArchivedCourses from "./components/Courses/ArchivedCourses";
 import AddQuestions from "./components/Quiz/AddQuestions";
 import Export from "./components/Export";
+import CourseNotify from "./components/CourseNotify.js/CourseNotify";
 
 function isAuthenticated() {
   return localStorage.getItem("Token") ? true : false;
@@ -60,6 +61,7 @@ const App = () => {
         <Switch>
           <PrivateRoute path="/take-courses" component={TakeCourse} />
           <PrivateRoute path="/view-give" component={ViewGive} />
+          <PrivateRoute path="/course-notify" component={CourseNotify} />
           <PrivateRoute
             path="/give-and-take"
             component={() => <GiveAndTake setFeedLength={setFeedLength} />}
@@ -80,11 +82,11 @@ const App = () => {
           <PrivateRoute path="/edit-user/:id" component={EditUser} />
           <PrivateRoute path="/users" component={Users} />
           <PrivateRoute path="/add-user" component={AddUser} />
-          <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute path="/archived" component={ArchivedCourses} />
           <PrivateRoute path="/add-questions" component={AddQuestions} />
           <PrivateRoute path="/export" component={Export} />
           <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/" component={Home} />
         </Switch>
       </Router>
     </div>

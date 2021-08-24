@@ -1,77 +1,23 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 
-function Mcq({ Item, index, changeVal, showSubmit = true }) {
-  const OptionsDiv = (length) => {
-    // eslint-disable-next-line no-unused-vars
-    let name = 0;
-    return (
-      <div className="form-group col-sm-6 d-flex align-items-end pl-0">
-        <div className="col-sm-10">
-          <label htmlFor="exampleInputPassword1">Add Options</label>
-          <input
-            type="text"
-            className="form-control"
-            name={`options_${length}`}
-            placeholder="Enter options"
-          />
-        </div>
-        <div className="col-sm-2">
-          <span>
-            <Button
-              className="mr-1"
-              color="secondary"
-              id={`Tooltip-1`}
-              onClick={() => {
-                const divs = options.options;
-
-                divs.push(OptionsDiv(divs.length));
-
-                setOptions({
-                  options: divs,
-                });
-
-                name = options.options.length;
-              }}
-            >
-              <i className="fas fa-plus"></i>
-            </Button>
-          </span>
-        </div>
-        <div className="col-sm-2">
-          <span>
-            <Button
-              className="mr-1"
-              color="secondary"
-              id={`Tooltip-1`}
-              onClick={() => {
-                const divs = options.options;
-
-                if (divs.length !== 1 && divs.length !== 0) {
-                  divs.pop(OptionsDiv(divs.length));
-                  setOptions({
-                    options: divs,
-                  });
-
-                  name = options.options.length;
-                }
-              }}
-            >
-              <i className="fas fa-minus"></i>
-            </Button>
-          </span>
-        </div>
-      </div>
-    );
+function Mcq({ currItem, index, whole, setNumQues, submitQues, showSubmit }) {
+  const [item, setItem] = useState(currItem);
+  console.log(item);
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    const arr = whole;
+    arr[index] = { ...arr[index], [name]: value };
+    console.log(arr);
+    setItem({ ...item, [name]: value });
+    setNumQues(arr);
   };
-
-  const [options, setOptions] = useState({
-    options: [OptionsDiv()],
-  });
+  console.log(item);
 
   return (
     <React.Fragment>
-      <form>
+      <form onSubmit={submitQues}>
         <div className="">
           <div className="form-group col-sm-6">
             <label htmlFor="exampleInputEmail1">Enter question</label>
@@ -81,11 +27,49 @@ function Mcq({ Item, index, changeVal, showSubmit = true }) {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter question"
+              name="question"
+              value={item?.question}
+              onChange={(e) => handleInput(e)}
             />
           </div>
-          {options.options.map((item, index) => (
-            <div key={index}>{item}</div>
-          ))}
+          <div className="form-group col-sm-6">
+            <label htmlFor="exampleInputPassword1">Option 1</label>
+            <input
+              type="text"
+              className="form-control"
+              name={`optionA`}
+              value={item?.optionA}
+              placeholder="Enter options"
+              onChange={(e) => handleInput(e)}
+            />
+            <label htmlFor="exampleInputPassword1">Option 2</label>
+            <input
+              type="text"
+              className="form-control"
+              name={`optionB`}
+              placeholder="Enter options"
+              value={item?.optionB}
+              onChange={(e) => handleInput(e)}
+            />
+            <label htmlFor="exampleInputPassword1">Option 3</label>
+            <input
+              type="text"
+              className="form-control"
+              name={`optionC`}
+              placeholder="Enter options"
+              value={item?.optionC}
+              onChange={(e) => handleInput(e)}
+            />
+            <label htmlFor="exampleInputPassword1">Option 4</label>
+            <input
+              type="text"
+              className="form-control"
+              name={`optionD`}
+              placeholder="Enter options"
+              value={item?.optionD}
+              onChange={(e) => handleInput(e)}
+            />
+          </div>
           <div className="form-group col-sm-6">
             <label htmlFor="exampleInputEmail1">Enter Answer</label>
             <input
@@ -94,6 +78,22 @@ function Mcq({ Item, index, changeVal, showSubmit = true }) {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter answer"
+              name="answer"
+              value={item?.answer}
+              onChange={(e) => handleInput(e)}
+            />
+          </div>
+          <div className="form-group col-sm-6">
+            <label htmlFor="exampleInputEmail1">Enter Point</label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter answer"
+              name="point"
+              value={item?.point}
+              onChange={(e) => handleInput(e)}
             />
           </div>
           {showSubmit && (

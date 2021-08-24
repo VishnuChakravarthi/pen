@@ -13928,3 +13928,7 @@ transition:box-shadow .3s, transform .3s .1s;
   left: -186px !important;
     width: 340px !important;
 }
+
+.dropzone{
+  text-align: center;
+}

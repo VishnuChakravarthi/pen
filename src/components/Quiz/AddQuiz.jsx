@@ -6,9 +6,12 @@ import AddQuestions from "./AddQuestions";
 function AddQuiz() {
   const [asses, setAsses] = useState("");
   const [courses, setCourses] = useState([]);
-  const [page, setPage] = useState(2);
+  const [syllabus, setSyllabus] = useState([]);
+  const [page, setPage] = useState(1);
   const [page1Data, setData] = useState("");
   const [lesson, setLesson] = useState([]);
+  const [id, setId] = useState("");
+  const [sylId, setSylId] = useState("");
 
   const token = localStorage.getItem("Token");
   console.log("Basic " + token);
@@ -19,44 +22,62 @@ function AddQuiz() {
         method: "get",
         url: `${url}/view-all-courses`,
         headers: { Authorization: `Basic ${token}` },
-      }).then((res) => {
-        console.log(res.data.data);
-        setCourses(res.data.data);
-      });
+      })
+        .then((res) => {
+          console.log(res.data.data);
+          setCourses(res.data.data);
+          setId(res.data.data[0].course_id);
+        })
+        .catch((e) => console.log(e));
     };
-    if (!courses.length > 0) fetchCourses();
-  }, [courses, token]);
-  console.log(asses);
+    fetchCourses();
+  }, [token]);
 
-  const getLessons = useCallback(
-    async (id) => {
+  useEffect(() => {
+    const getSyl = async () => {
       try {
         await axios({
           method: "get",
-          url: `${url}/view-lessons/${id}`,
+          url: `${url}/syllabus/${id}`,
           headers: { Authorization: `Basic ${token}` },
         }).then((res) => {
           console.log(res.data.data);
-          console.log(lesson);
+          setSyllabus(res.data.data);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getSyl();
+  }, [id, token]);
+
+  useEffect(() => {
+    const getLessons = async () => {
+      try {
+        await axios({
+          method: "get",
+          url: `${url}/view-lessons/${sylId}`,
+          headers: { Authorization: `Basic ${token}` },
+        }).then((res) => {
+          console.log(res.data.data);
           setLesson(res.data.data);
         });
       } catch (error) {
         console.log(error);
       }
-    },
-    [lesson, token]
-  );
+    };
+    getLessons();
+  }, [sylId, token]);
 
   const onSubmit = async () => {
     console.log(asses);
-    await axios({
-      method: "post",
-      url: `${url}/add-assessment`,
-      headers: { Authorization: `Basic ${token}` },
-      body: asses,
-    }).then((res) => {
-      console.log(res);
-    });
+    await axios
+      .post(`${url}/add-assessment`, asses, {
+        headers: { Authorization: `Basic ${token}` },
+      })
+      .then((res) => {
+        console.log(res);
+      });
     setData(asses);
     setPage(2);
   };
@@ -66,34 +87,92 @@ function AddQuiz() {
       <React.Fragment>
         <div className="content-page">
           <div className="content">
-            <div className="container-fluid">
-              <h3 className="mb-2">Add Assessment</h3>
+            <div className="container-fluid ">
+              <div className="d-flex justify-content-between align-center">
+                <h3 className="mb-2">Add Assessment</h3>
+                <div className="text-right">
+                  <button
+                    type="button"
+                    className="btn btn-info"
+                    onClick={() => setPage(2)}
+                  >
+                    Add Quiz
+                  </button>
+                </div>
+              </div>
               <form className="form-horizontal">
                 <div className="form-group row">
                   <label
                     className="col-sm-2  col-form-label"
-                    htmlFor="simpleinput"
+                    // htmlFor="simpleinput"
                   >
-                    Courses
+                    Course
                   </label>
                   <div className="col-sm-10">
                     <select
-                      name="course_id"
-                      className="form-control"
-                      required
-                      onChange={(e) => {
-                        setAsses({ ...asses, course_id: e.target.value });
-                        getLessons(e.target.value);
-                      }}
+                      className=" form-control"
+                      placeholder="Select Course"
+                      // onChange={(e) => getLessons(e.target.value)}
+                      onChange={(e) => setId(e.target.value)}
                     >
-                      <option value="none">Select Course</option>
-                      {courses.map((item, index) => {
-                        return (
-                          <option value={item.course_id}>
-                            {item.course_title}
+                      {courses.map((course, index) => (
+                        <option value={course.course_id} key={index}>
+                          {course.course_title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    className="col-sm-2  col-form-label"
+                    // htmlFor="simpleinput"
+                  >
+                    Syllabus
+                  </label>
+                  <div className="col-sm-10">
+                    <select
+                      className=" form-control"
+                      placeholder="Select Course"
+                      // onChange={(e) => getLessons(e.target.value)}
+                      onChange={(e) => setSylId(e.target.value)}
+                    >
+                      <option selected disabled>
+                        Select a Syllabus
+                      </option>
+                      {syllabus.map((course, index) => (
+                        <option value={course.id} key={index}>
+                          {course.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label
+                    className="col-sm-2  col-form-label"
+                    // htmlFor="simpleinput"
+                  >
+                    Lesson
+                  </label>
+                  <div className="col-sm-10">
+                    <select
+                      className=" form-control"
+                      placeholder="Select Lesson"
+                      onChange={(e) =>
+                        setAsses({ ...asses, lesson_id: e.target.value })
+                      }
+                    >
+                      <option selected disabled>
+                        Select a lesson
+                      </option>
+                      {lesson?.map((lesson, index) => (
+                        <>
+                          <option value={lesson.id} key={index}>
+                            {lesson.title}
                           </option>
-                        );
-                      })}
+                        </>
+                      ))}
                     </select>
                   </div>
                 </div>

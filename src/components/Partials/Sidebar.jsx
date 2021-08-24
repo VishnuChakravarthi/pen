@@ -44,6 +44,11 @@ const Sidebar = ({ feedLength }) => {
       name: "Orders",
     },
     {
+      link: "/course-notify",
+      icon: "mdi-book-open-page-variant",
+      name: "Course Request",
+    },
+    {
       link: "/archived",
       icon: "mdi-view-list",
       name: "Archived Courses",

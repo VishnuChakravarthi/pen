@@ -7,7 +7,12 @@ import Location from "./Location";
 import Categories from "./Categories";
 import CatGender from "./CatGender";
 import CourseGender from "./CourseGender";
+import CourseRequest from "./CourseRequest";
 import Export from "../Export";
+import GenderAndAge from "./GenderAndAge";
+import CourseByProfession from "./CourseByProfession";
+import Attributes from "./Attributes";
+import { Suspense } from "react";
 
 const Home = () => {
   const [data, setData] = useState({
@@ -17,9 +22,13 @@ const Home = () => {
     user_per_course: [],
     user_per_course_gender: [],
     user_per_course_location: [],
+    user_req_course: [],
   });
+  const [reqCourse, setReqCourse] = useState([]);
+  const [tableData, setTableData] = useState([]);
+  const [attribs, setAttribs] = useState([]);
 
-  const [drop, setDrop] = useState("user_per_course_location");
+  const [drop, setDrop] = useState("user_per_course_gender_age");
 
   const [series1, setSeries1] = useState([44, 55, 41, 17]);
 
@@ -53,8 +62,47 @@ const Home = () => {
         setData(res.data[0]);
       });
     }
+
+    (async () => {
+      await axios
+        .get(url + "/no-course", {
+          headers: {
+            Authorization: `Basic ${localStorage.getItem("Token")}`,
+          },
+        })
+        .then((response) => {
+          setReqCourse(response.data);
+        });
+    })();
+
+    (async () => {
+      await axios
+        .get(url + "/dashboarddata", {
+          headers: {
+            Authorization: `Basic ${localStorage.getItem("Token")}`,
+          },
+        })
+        .then((response) => {
+          setTableData(response.data);
+        });
+    })();
+
+    (async () => {
+      await axios
+        .get(url + "/attribs", {
+          headers: {
+            Authorization: `Basic ${localStorage.getItem("Token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response, "atribsssssssssssssss");
+          setAttribs(response.data.data);
+        });
+    })();
+
     fetchDash();
   }, []);
+  console.log(tableData);
 
   const [options1] = useState({
     chart: {
@@ -172,72 +220,89 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      <div className="content-page">
-        <div className="content">
-          <div className="container-fluid">
-            <div className="card-box m-3">
-              <div className="d-flex justify-content-between dash__head">
-                <h1>Dashboard</h1>
-                <Export />
-              </div>
-              {/* USERS PER CATEGORY */}
-              <div className="row">
-                <div className="col-xl-6">
-                  <div className="card-box m-3">
-                    <h4 className="header-title mb-3">Users per Category</h4>
-                    <ReactApexChart
-                      options={options1}
-                      series={series1}
-                      type="donut"
-                      height={350}
-                    />
+      <Suspense fallback={<h2>Loading....</h2>}>
+        <div className="content-page">
+          <div className="content">
+            <div className="container-fluid">
+              <div className="card-box m-3">
+                <div className="d-flex justify-content-between dash__head">
+                  <h1>Dashboard</h1>
+                  <Export />
+                </div>
+                {/* USERS PER CATEGORY */}
+                <div className="row">
+                  <div className="col-xl-6">
+                    <div className="card-box m-3">
+                      <h4 className="header-title mb-3">Users per Category</h4>
+                      <ReactApexChart
+                        options={options1}
+                        series={series1}
+                        type="donut"
+                        height={350}
+                      />
+                    </div>
+                  </div>
+                  <div className="col-xl-6">
+                    <div className="card-box m-3">
+                      <h4 className="header-title mb-3">
+                        Users per Categories and Gender
+                      </h4>
+                      <ReactApexChart
+                        options={options2}
+                        series={series2}
+                        type="bar"
+                        height={260}
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="col-xl-6">
-                  <div className="card-box m-3">
-                    <h4 className="header-title mb-3">
-                      Users per Categories and Gender
-                    </h4>
-                    <ReactApexChart
-                      options={options2}
-                      series={series2}
-                      type="bar"
-                      height={260}
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* TABLES */}
-              <div className="row mt-5">
-                <div className="col-xl-12">
-                  <div className="d-flex align-items-center justify-content-between">
-                    <h4 className="header-title mb-3">
-                      Course Users Categories
-                    </h4>
-                    <div className="form-group">
-                      <select
-                        className="form-control"
-                        value={drop}
-                        onChange={(e) => setDrop(e.target.value)}
-                      >
-                        <option defaultChecked value="user_per_course_location">
+                {/* TABLES */}
+                <div className="row mt-5">
+                  <div className="col-xl-12">
+                    <div className="d-flex align-items-center justify-content-between">
+                      <h4 className="header-title mb-3">
+                        Course Users Categories
+                      </h4>
+                      <div className="form-group">
+                        <select
+                          className="form-control"
+                          value={drop}
+                          onChange={(e) => setDrop(e.target.value)}
+                        >
+                          {/* <option defaultChecked value="user_per_course_gender">
+                          Course Users Categorised by Gender
+                        </option>
+                        <option value="user_per_course_location">
                           Course Users Categorised by Location
                         </option>
                         <option value="user_per_category_location">
                           Course Users Categorised by Categories
                         </option>
-                        <option value="user_per_course_gender">
-                          Course Users Categorised by Gender
-                        </option>
                         <option value="user_per_category_gender">
                           Course Users Categorised by Categories and Gender
                         </option>
-                      </select>
+                        <option value="user_requested_course">
+                          Course requested by Users
+                        </option> */}
+                          <option
+                            defaultChecked
+                            value="user_per_course_gender_age"
+                          >
+                            Course Users Categorised by Gender and Age
+                          </option>
+                          <option value="user_requested_course">
+                            Course requested by Users
+                          </option>
+                          <option value="user_profession_course">
+                            Course by Users based on Profession
+                          </option>
+                          <option value="points_given">Points Given</option>
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="table-responsive">
-                    {drop === "user_per_course_location" && (
+                    <div className="table-responsive">
+                      {/* {drop === "user_per_course_location" && (
                       <Location states={states} data={data} />
                     )}
                     {drop === "user_per_category_location" && (
@@ -249,13 +314,27 @@ const Home = () => {
                     {drop === "user_per_category_gender" && (
                       <CatGender data={data} />
                     )}
+                    {drop === "user_requested_course" && (
+                      <CourseRequest data={reqCourse} />
+                    )} */}
+                      {drop === "user_per_course_gender_age" && (
+                        <GenderAndAge data={tableData} />
+                      )}
+                      {drop === "user_requested_course" && (
+                        <CourseRequest data={reqCourse} />
+                      )}
+                      {drop === "user_profession_course" && (
+                        <CourseByProfession data={tableData} />
+                      )}
+                      {drop === "points_given" && <Attributes data={attribs} />}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Suspense>
     </React.Fragment>
   );
 };

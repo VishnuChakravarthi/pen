@@ -30,45 +30,61 @@ function Quiz() {
   const [assessment, setAssessment] = useState([]);
 
   useEffect(() => {
+    // const fetchAssessment = async () => {
+    //   const token = localStorage.getItem("Token");
+    //   await axios(`${url}/view-all-courses`, {
+    //     method: "get",
+    //     headers: {
+    //       Authorization: `Basic ${token}`,
+    //     },
+    //   }).then(async (res) => {
+    //     var arr = res.data.data.map((item) => item.course_id);
+    //     arr.forEach(async (_item) => {
+    //       await axios(`${url}/syllabus/${_item}`, {
+    //         method: "get",
+    //         headers: {
+    //           Authorization: `Basic ${token}`,
+    //         },
+    //       }).then((_res) => {
+    //         var _add = _res.data.data
+    //           ? _res.data.data.map((ele) => ele.id)
+    //           : [];
+    //         _add.forEach(async (__item) => {
+    //           await axios(`${url}/view-assessment/${__item}`, {
+    //             method: "get",
+    //             headers: {
+    //               Authorization: `Basic ${token}`,
+    //             },
+    //           }).then((__res) => {
+    //             if (__res.data.data) {
+    //               var fin = __res.data.data.map((__item, i) => {
+    //                 return {
+    //                   ...__item,
+    //                   course_title: res.data.data[i].course_title,
+    //                 };
+    //               });
+    //               setAssessment([...assessment, ...fin]);
+    //             }
+    //           });
+    //         });
+    //       });
+    //     });
+    //   });
+    // };
+
     const fetchAssessment = async () => {
       const token = localStorage.getItem("Token");
-      await axios(`${url}/view-all-courses`, {
+      await axios(`${url}/view-assessments`, {
         method: "get",
         headers: {
           Authorization: `Basic ${token}`,
         },
       }).then(async (res) => {
-        var arr = res.data.data.map((item) => item.course_id);
-        arr.forEach(async (_item) => {
-          await axios(`${url}/syllabus/${_item}`, {
-            method: "get",
-            headers: {
-              Authorization: `Basic ${token}`,
-            },
-          }).then((_res) => {
-            var _add = _res.data.data
-              ? _res.data.data.map((ele) => ele.id)
-              : [];
-            _add.forEach(async (__item) => {
-              await axios(`${url}/view-assessment/${__item}`, {
-                method: "get",
-                headers: {
-                  Authorization: `Basic ${token}`,
-                },
-              }).then((__res) => {
-                if (__res.data.data) {
-                  var fin = __res.data.data.map((__item, i) => {
-                    return {
-                      ...__item,
-                      course_title: res.data.data[i].course_title,
-                    };
-                  });
-                  setAssessment([...assessment, ...fin]);
-                }
-              });
-            });
-          });
-        });
+        console.log(res.data);
+        if (Object.keys(res.data).includes("error")) {
+          return setAssessment([]);
+        }
+        setAssessment(res.data.data);
       });
     };
 
@@ -78,7 +94,7 @@ function Quiz() {
   const headers = [
     { label: "ID", key: "id" },
     { label: "Name", key: "title" },
-    { label: "Course", key: "course_title" },
+    { label: "Course", key: "course.course_title" },
     { label: "Created Date", key: "created_at" },
     { label: "Modified Date", key: "updated_at" },
   ];
@@ -127,45 +143,49 @@ function Quiz() {
                     <th>Actions</th>
                   </thead>
                   <tbody>
-                    {assessment.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{item.id}</td>
-                          <td>{item.title}</td>
-                          <td>{item.course_title}</td>
-                          <td>{item.created_at}</td>
-                          <td>
-                            {item.updated_at + " By " + item.updated_by.name}
-                          </td>
-                          <td>
-                            <div className="d-flex">
-                              <Link
-                                to={{
-                                  pathname: "view-quiz",
-                                  state: { item },
-                                }}
-                              >
-                                <button className="btn btn-primary mr-3">
-                                  View
-                                </button>
-                              </Link>
-                              <Link to="/add-quiz">
-                                {" "}
-                                <button className="btn btn-secondary mr-3">
-                                  Edit
-                                </button>
-                              </Link>
-                              <button
-                                className="btn btn-danger"
-                                onClick={deletefn}
-                              >
-                                Delete
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {assessment.length
+                      ? assessment?.map((item, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{item.id}</td>
+                              <td>{item.title}</td>
+                              <td>{item.course.course_title}</td>
+                              <td>{item.created_at}</td>
+                              <td>
+                                {item.updated_at +
+                                  " By " +
+                                  item.updated_by.name}
+                              </td>
+                              <td>
+                                <div className="d-flex">
+                                  {/* <Link
+                                    to={{
+                                      pathname: "view-quiz",
+                                      state: { item },
+                                    }}
+                                  >
+                                    <button className="btn btn-primary mr-3">
+                                      View
+                                    </button>
+                                  </Link> */}
+                                  <Link to="/add-quiz">
+                                    {" "}
+                                    <button className="btn btn-secondary mr-3">
+                                      Edit
+                                    </button>
+                                  </Link>
+                                  <button
+                                    className="btn btn-danger"
+                                    onClick={deletefn}
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      : null}
                   </tbody>
                 </table>
               </div>

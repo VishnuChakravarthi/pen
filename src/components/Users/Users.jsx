@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import { url } from "../api";
 import MyVerticallyCenteredModal from "../Partials/uploadModal";
 import { CSVLink } from "react-csv";
+import { Suspense } from "react";
 
 function Users() {
   //population users table with api data
@@ -94,192 +95,194 @@ function Users() {
 
   return (
     <React.Fragment>
-      <div className="content-page">
-        <div className="content">
-          <div className="container-fluid">
-            <div className="card-box">
-              <div className="d-flex justify-content-between">
-                <h3>Users</h3>
-                <div className="d-flex align-items-center">
-                  <Link to="/add-user">
-                    <button
-                      type="button"
-                      className="btn btn-purple btn-rounded w-md waves-effect waves-light mr-2"
-                    >
-                      <i className="mdi mdi-plus"></i> Add User
-                    </button>
-                  </Link>
+      <Suspense fallback={<h2>Loading....</h2>}>
+        <div className="content-page">
+          <div className="content">
+            <div className="container-fluid">
+              <div className="card-box">
+                <div className="d-flex justify-content-between">
+                  <h3>Users</h3>
+                  <div className="d-flex align-items-center">
+                    <Link to="/add-user">
+                      <button
+                        type="button"
+                        className="btn btn-purple btn-rounded w-md waves-effect waves-light mr-2"
+                      >
+                        <i className="mdi mdi-plus"></i> Add User
+                      </button>
+                    </Link>
 
-                  {users !== [] && (
-                    <CSVLink
-                      data={users}
-                      headers={headers}
-                      className="btn btn-primary btn-rounded w-md waves-effect waves-light mr-2"
-                      filename={"users.csv"}
-                    >
-                      Export CSV
-                    </CSVLink>
-                  )}
+                    {users !== [] && (
+                      <CSVLink
+                        data={users}
+                        headers={headers}
+                        className="btn btn-primary btn-rounded w-md waves-effect waves-light mr-2"
+                        filename={"users.csv"}
+                      >
+                        Export CSV
+                      </CSVLink>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <MyVerticallyCenteredModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-              />
-              <div className="table-responsive">
-                <table className="table table-hover mb-0">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>
-                        Username
-                        <span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("username", 1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-up"></i>
+                <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+                <div className="table-responsive">
+                  <table className="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>
+                          Username
+                          <span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("username", 1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-up"></i>
+                            </span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("username", -1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-down"></i>
+                            </span>
                           </span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("username", -1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-down"></i>
+                        </th>
+                        <th>
+                          Phone
+                          <span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("phone", 1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-up"></i>
+                            </span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("phone", -1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-down"></i>
+                            </span>
                           </span>
-                        </span>
-                      </th>
-                      <th>
-                        Phone
-                        <span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("phone", 1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-up"></i>
+                        </th>
+                        <th>
+                          Email
+                          <span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("email", 1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-up"></i>
+                            </span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("email", -1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-down"></i>
+                            </span>
                           </span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("phone", -1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-down"></i>
+                        </th>
+                        <th>
+                          Joined Date
+                          <span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("date", 1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-up"></i>
+                            </span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("date", -1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-down"></i>
+                            </span>
                           </span>
-                        </span>
-                      </th>
-                      <th>
-                        Email
-                        <span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("email", 1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-up"></i>
+                        </th>
+                        <th>
+                          Modified
+                          <span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("date", 1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-up"></i>
+                            </span>
+                            <span
+                              type="button"
+                              onClick={() => {
+                                sort("date", -1);
+                              }}
+                            >
+                              <i className="mdi mdi-arrow-down"></i>
+                            </span>
                           </span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("email", -1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-down"></i>
-                          </span>
-                        </span>
-                      </th>
-                      <th>
-                        Joined Date
-                        <span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("date", 1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-up"></i>
-                          </span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("date", -1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-down"></i>
-                          </span>
-                        </span>
-                      </th>
-                      <th>
-                        Modified
-                        <span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("date", 1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-up"></i>
-                          </span>
-                          <span
-                            type="button"
-                            onClick={() => {
-                              sort("date", -1);
-                            }}
-                          >
-                            <i className="mdi mdi-arrow-down"></i>
-                          </span>
-                        </span>
-                      </th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {users.map((item, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{item.id}</td>
-                          <td>{item.name}</td>
-                          <td>{item.phoneno}</td>
-                          <td>{item.email}</td>
-                          <td>{item.created_at}</td>
-                          <td>{item.updated_at}</td>
-                          <td>
-                            <div className="d-flex">
-                              <Link to={`/view-user?id=${item.id}`}>
-                                <button className="btn btn-primary mr-3">
-                                  View
-                                </button>
-                              </Link>
-                              <Link to={`edit-user/${item.id}`}>
-                                <button className="btn btn-secondary mr-3">
-                                  Edit
-                                </button>
-                              </Link>
+                        </th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {users.map((item, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{item.id}</td>
+                            <td>{item.name}</td>
+                            <td>{item.phoneno}</td>
+                            <td>{item.email}</td>
+                            <td>{item.created_at}</td>
+                            <td>{item.updated_at}</td>
+                            <td>
+                              <div className="d-flex">
+                                <Link to={`/view-user?id=${item.id}`}>
+                                  <button className="btn btn-primary mr-3">
+                                    View
+                                  </button>
+                                </Link>
+                                <Link to={`edit-user/${item.id}`}>
+                                  <button className="btn btn-secondary mr-3">
+                                    Edit
+                                  </button>
+                                </Link>
 
-                              {/* <button
+                                {/* <button
                                 className="btn btn-danger mr-3"
                                 onClick={deletefn}
                               >
                                 Delete
                               </button> */}
-                            </div>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Suspense>
     </React.Fragment>
   );
 }
